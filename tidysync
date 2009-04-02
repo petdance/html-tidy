@@ -5,10 +5,9 @@
 This is not meant for human consumption.  It's for Andy to sync up the
 libtidy CVS directory with the html-tidy copy of it.
 
-This expects that yout tidy checked out like so, in a parallel directory
+This expects that you have tidy checked out like so, in a parallel directory:
 
     cvs -d:pserver:anonymous@tidy.cvs.sourceforge.net:/cvsroot/tidy login
-
     cvs -z3 -d:pserver:anonymous@tidy.cvs.sourceforge.net:/cvsroot/tidy co -P modulename
 
 =cut
@@ -18,6 +17,7 @@ use strict;
 
 use File::Copy;
 use File::Find;
+use Perl6::Say;
 
 # This finagling assumes we're in html-tidy, and there's a ../tidy
 
@@ -36,6 +36,6 @@ find( sub {
         $name =~ s{^\Q$sourcedir/}{} or die "Bad filenaming going on";
         my $source = "$sourcedir/$name";
         my $target = "libtidy/$name";
-        print "cp $source $target\n";
+        say "cp -p $source $target";
         #copy( $source, $target ) or die "Can't copy $source to $target: $!";
     }, $sourcedir );
