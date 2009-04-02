@@ -73,7 +73,7 @@ _tidy_messages(input, configfile, tidy_options)
         }
 
         if ( rc >= 0 && errbuf.bp) {
-            XPUSHs( sv_2mortal(newSVpvn(errbuf.bp, errbuf.size)) );
+            XPUSHs( sv_2mortal(newSVpvn((char *)errbuf.bp, errbuf.size)) );
 
             /* TODO: Make this a function */
             switch ( tidyOptGetInt(tdoc,TidyNewline) ) {
@@ -158,8 +158,8 @@ _tidy_clean(input, configfile, tidy_options)
         }
 
         if ( rc >= 0 && output.bp && errbuf.bp ) {
-            XPUSHs( sv_2mortal(newSVpvn(output.bp, output.size)) );
-            XPUSHs( sv_2mortal(newSVpvn(errbuf.bp, errbuf.size)) );
+            XPUSHs( sv_2mortal(newSVpvn((char *)output.bp, output.size)) );
+            XPUSHs( sv_2mortal(newSVpvn((char *)errbuf.bp, errbuf.size)) );
 
             /* TODO: Hoist this into a function */
             switch ( tidyOptGetInt(tdoc,TidyNewline) ) {
