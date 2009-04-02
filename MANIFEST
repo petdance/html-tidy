@@ -33,4 +33,3 @@ t/version.t
 t/wordwrap.cfg
 t/wordwrap.t
 Tidy.xs
-META.yml                                 Module meta-data (added by MakeMaker)
