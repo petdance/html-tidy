@@ -18,27 +18,21 @@ _load_config_hash(TidyDoc tdoc, HV *tidy_options)
     while ( entry = hv_iternext(tidy_options) ) {
         I32 key_len;
 
-        TidyOptionId id;
-
-        SV *sv_data;
-        const char *data;
-        STRLEN data_len;
-
         const char * const key = hv_iterkey(entry,&key_len);
         const TidyOption opt = tidyGetOptionByName(tdoc,key);
 
         if (!opt) {
-            warn("HTML::Tidy: Unrecognized option: \"%s\"\n",key);
-            continue;
+            warn( "HTML::Tidy: Unrecognized option: \"%s\"\n",key );
         }
+        else {
+            const TidyOptionId id   = tidyOptGetId(opt);
+            SV * const sv_data      = hv_iterval(tidy_options,entry);
+            STRLEN data_len;
+            const char * const data = SvPV(sv_data,data_len);
 
-        id = tidyOptGetId(opt);
-        sv_data = hv_iterval(tidy_options,entry);
-        data = SvPV(sv_data,data_len);
-
-        if ( ! tidyOptSetValue(tdoc,id,data) ) {
-            warn("HTML::Tidy: Can't set option: \"%s\" to \"%s\"\n",
-                 key, data);
+            if ( ! tidyOptSetValue(tdoc,id,data) ) {
+                warn( "HTML::Tidy: Can't set option: \"%s\" to \"%s\"\n", key, data );
+            }
         }
     }
 }
