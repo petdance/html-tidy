@@ -24,7 +24,7 @@ our $VERSION = '1.08';
     use HTML::Tidy;
 
     my $tidy = HTML::Tidy->new( {config_file => 'path/to/config'} );
-    $tidy->ignore( type => TIDY_WARNING );
+    $tidy->ignore( type => TIDY_WARNING, typed => TIDY_INFO );
     $tidy->parse( "foo.html", $contents_of_foo );
 
     for my $message ( $tidy->messages ) {
@@ -39,7 +39,7 @@ user looking to migrate, see the section L</Converting from HTML::Lint>.
 
 =head1 EXPORTS
 
-Message types C<TIDY_WARNING> and C<TIDY_ERROR>.
+Message types C<TIDY_ERROR>, C<TIDY_WARNING> and C<TIDY_INFO>.
 
 Everything else is an object method.
 
@@ -47,10 +47,11 @@ Everything else is an object method.
 
 use base 'Exporter';
 
-use constant TIDY_ERROR   => 2;
-use constant TIDY_WARNING => 1;
+use constant TIDY_ERROR   => 3;
+use constant TIDY_WARNING => 2;
+use constant TIDY_INFO    => 1;
 
-our @EXPORT = qw( TIDY_ERROR TIDY_WARNING );
+our @EXPORT = qw( TIDY_ERROR TIDY_WARNING TIDY_INFO );
 
 =head1 METHODS
 
@@ -95,10 +96,10 @@ sub new {
     ); # REVIEW perhaps a list of supported options would be better
 
     my $self = bless {
-        messages => [],
-        ignore_type => [],
-        ignore_text => [],
-        config_file => '',
+        messages     => [],
+        ignore_type  => [],
+        ignore_text  => [],
+        config_file  => '',
         tidy_options => {},
     }, $class;
 
@@ -157,11 +158,11 @@ as necessary to set up all your restrictions; the options will stack up.
 
 =over 4
 
-=item * type => TIDY_(WARNING|ERROR)
+=item * type => TIDY_INFO|TIDY_WARNING|TIDY_ERROR
 
-Specifies the type of messages you want to ignore, either warnings
-or errors.  If you wanted, you could call ignore on both and get no
-messages at all.
+Specifies the type of messages you want to ignore, either info or warnings
+or errors.  If you wanted, you could call ignore on all three and get
+no messages at all.
 
     $tidy->ignore( type => TIDY_WARNING );
 
@@ -243,11 +244,20 @@ sub _parse_errors {
         chomp $line;
 
         my $message;
-        if ( $line =~ /^line (\d+) column (\d+) - (Warning|Error): (.+)$/ ) {
+        if ( $line =~ /^line (\d+) column (\d+) - (Warning|Error|Info): (.+)$/ ) {
             my ($line, $col, $type, $text) = ($1, $2, $3, $4);
-            $type = ($type eq 'Warning') ? TIDY_WARNING : TIDY_ERROR;
+            $type =
+                ($type eq 'Warning') ? TIDY_WARNING :
+                ($type eq 'Info')    ? TIDY_INFO :
+                                       TIDY_ERROR;
             $message = HTML::Tidy::Message->new( $filename, $type, $line, $col, $text );
 
+        }
+        elsif ( $line =~ m/^Info: (.+)$/  ) {
+            # Info line we don't want
+
+            my $text = $1;
+            $message = HTML::Tidy::Message->new( $filename, TIDY_INFO, undef, undef, $text );
         }
         elsif ( $line =~ /^\d+ warnings?, \d+ errors? were found!/ ) {
             # Summary line we don't want
@@ -265,16 +275,12 @@ sub _parse_errors {
             # Summary line we don't want
 
         }
-        elsif ( $line =~ m/^Info:/  ) {
-            # Info line we don't want
-
-        }
         elsif ( $line =~ m/^\s*$/  ) {
             # Blank line we don't want
 
         }
         else {
-            Carp::carp "Unknown error type: $line";
+            Carp::carp "HTML::Tidy: Unknown error type: $line";
             ++$parse_errors;
         }
         push( @{$self->{messages}}, $message )
@@ -322,14 +328,12 @@ sub _is_keeper {
 
     my @ignore_types = @{$self->{ignore_type}};
     if ( @ignore_types ) {
-        my $type = $message->type;
-        return if grep { $type == $_ } @ignore_types;
+        return if grep { $message->type == $_ } @ignore_types;
     }
 
     my @ignore_texts = @{$self->{ignore_text}};
     if ( @ignore_texts ) {
-        my $text = $message->text;
-        return if grep { $text =~ $_ } @ignore_texts;
+        return if grep { $message->text =~ $_ } @ignore_texts;
     }
 
     return 1;

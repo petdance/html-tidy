@@ -1,4 +1,4 @@
-#!perl -Tw
+#!perl -w
 
 use warnings;
 use strict;
@@ -14,6 +14,7 @@ my $html = join '', <DATA>;
 my $tidy = HTML::Tidy->new;
 isa_ok( $tidy, 'HTML::Tidy' );
 
+$tidy->ignore( type => TIDY_INFO );
 $tidy->parse( '-', $html );
 
 my @messages = $tidy->messages;

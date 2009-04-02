@@ -11,6 +11,7 @@ BEGIN {
 my $args = { newline => 'Lf' };
 my $tidy = HTML::Tidy->new($args);
 isa_ok( $tidy, 'HTML::Tidy' );
+$tidy->ignore( type => TIDY_INFO );
 
 # clean once
 $tidy->ignore( text => qr/DOCTYPE/ );
@@ -19,6 +20,7 @@ my $clean = $tidy->clean( $html );
 
 # then verify that it meets tidy's high standards
 $tidy = HTML::Tidy->new($args); # reset messages;
+$tidy->ignore( type => TIDY_INFO );
 $clean = $tidy->clean($clean);
 my @messages = $tidy->messages( $clean );
 

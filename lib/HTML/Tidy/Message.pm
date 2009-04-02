@@ -40,11 +40,11 @@ sub new {
     # Add an element that says what tag caused the error (B, TR, etc)
     # so that we can match 'em up down the road.
     my $self  = {
-        _file => $file,
-        _type => $type,
-        _line => $line,
+        _file   => $file,
+        _type   => $type,
+        _line   => $line,
         _column => $column,
-        _text => $text,
+        _text   => $text,
     };
 
     bless $self, $class;
@@ -95,8 +95,9 @@ sub as_string {
     my $self = shift;
 
     my %strings = (
-        1 => 'Warning',
-        2 => 'Error',
+        1 => 'Info',
+        2 => 'Warning',
+        3 => 'Error',
     );
 
     return sprintf( '%s %s %s: %s',

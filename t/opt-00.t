@@ -10,21 +10,21 @@ BEGIN {
 }
 
 my $tidy = new HTML::Tidy({
-    tidy_mark => 0,
-    add_xml_decl => 1,
-    output_xhtml => 1,
-    doctype => 'strict',
-    clean => 1,
-    css_prefix   => 'myprefix',
-    drop_empty_paras => 0,
-    enclose_block_text => 1,
-    escape_cdata => 1,
-    hide_comments => 1,
-    replace_color => 1,
+    tidy_mark           => 0,
+    add_xml_decl        => 1,
+    output_xhtml        => 1,
+    doctype             => 'strict',
+    clean               => 1,
+    css_prefix          => 'myprefix',
+    drop_empty_paras    => 0,
+    enclose_block_text  => 1,
+    escape_cdata        => 1,
+    hide_comments       => 1,
+    replace_color       => 1,
     repeated_attributes => 'keep-first',
-    break_before_br => 1,
-    vertical_space => 1,
-    newline => 'cr',
+    break_before_br     => 1,
+    vertical_space      => 1,
+    newline             => 'cr',
 });
 
 my $input=<<'EOD';

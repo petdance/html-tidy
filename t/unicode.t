@@ -12,6 +12,7 @@ BEGIN {
 
 my $args = { newline => 'Lf' };
 my $tidy = HTML::Tidy->new($args);
+$tidy->ignore( type => TIDY_INFO );
 
 # suck in the reference HTML document
 open( my $html_in, '<:utf8', 't/unicode.html' ) or

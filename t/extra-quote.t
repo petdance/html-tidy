@@ -27,7 +27,7 @@ chomp @expected;
 shift @expected; # First one's blank
 
 my @messages = $tidy->messages;
-is( scalar @messages, 3 );
+is( scalar @messages, 3, 'Should have exactly three messages' );
 
 my @strings = map { $_->as_string } @messages;
 s/[\r\n]+\z// for @strings;

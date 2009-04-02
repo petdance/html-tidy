@@ -13,6 +13,7 @@ my $html = join '', <DATA>;
 my $tidy = new HTML::Tidy;
 isa_ok( $tidy, 'HTML::Tidy' );
 
+$tidy->ignore( type => TIDY_INFO );
 $tidy->parse( '-', $html );
 
 my @returned = map { $_->as_string } $tidy->messages;
