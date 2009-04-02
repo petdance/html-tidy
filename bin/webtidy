@@ -1,0 +1,79 @@
+#!/usr/bin/perl -w
+
+use warnings;
+use strict;
+
+use Getopt::Long;
+use HTML::Tidy;
+
+my $help;
+my $context;
+
+my $tidy = new HTML::Tidy;
+
+GetOptions(
+    'help'          => \$help,
+    'context:i'     => \$context,
+    'noerrors'      => sub { $tidy->ignore( type => [ TIDY_ERROR ] ) },
+    'nowarnings'    => sub { $tidy->ignore( type => [ TIDY_WARNING ] ) },
+) or $help = 1;
+
+if ( !@ARGV || $help ) {
+    print "webtidy v$HTML::Tidy::VERSION\n";
+    print <DATA>;
+    exit 1;
+}
+
+
+for my $url ( @ARGV ) {
+    my @lines;
+    if ( $url =~ /^https?:/ ) {
+        eval { require LWP::Simple };
+        if ( $@ ) {
+            warn q{Can't retrieve URLs without LWP::Simple installed};
+            next;
+        }
+
+        my $content = LWP::Simple::get( $url );
+        if ( $content ) {
+            @lines = split( /\n/, $content );
+            $_ = "$_\n" for @lines;
+        } else {
+            warn "Unable to fetch $url\n";
+            next;
+        }
+    } else {
+        open( my $fh, '<', $url ) or die "Can't open $url: $!";
+        @lines = <$fh>;
+        close $fh;
+    }
+
+    $tidy->parse( $url, @lines );
+    for my $message ( $tidy->messages ) {
+        print $message->as_string(), "\n";
+        if ( defined $context ) {
+            $context += 0;
+            my $lineno = $message->line - 1;
+
+            my $start = $lineno-$context;
+            $start = 0 if $start < 0;
+
+            my $end = $lineno+$context;
+            $end = $#lines if $end > $#lines;
+
+            for my $i ( $start..$end ) {
+                printf( '%5d: %s', $i+1, $lines[$i] );
+            }
+            print "\n";
+        }
+    }
+    $tidy->clear_messages();
+} # for files
+
+__END__
+Usage: webtidy [filename or url]... (filename - reads STDIN)
+    --context[=n]   Show the offending line (and n surrounding lines)
+    --noerrors      Ignore errors
+    --nowarnings    Ignore warnings
+
+    --help          This message
