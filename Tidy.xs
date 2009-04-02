@@ -15,7 +15,7 @@ _load_config_hash(TidyDoc tdoc, HV *tidy_options)
 
     (void) hv_iterinit(tidy_options);
 
-    while ( entry = hv_iternext(tidy_options) ) {
+    while ( (entry = hv_iternext(tidy_options)) != NULL ) {
         I32 key_len;
 
         const char * const key = hv_iterkey(entry,&key_len);
