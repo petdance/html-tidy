@@ -22,8 +22,8 @@ to http://tidy.sourceforge.net/.
 
 If you do have libtidy installed, and I just haven't detected it,
 go ahead and try building.  If HTML::Tidy builds and tests correctly,
-then please let Andy Lester know at bug-html-tidy@rt.cpan.org so that
-he can fix the library detection code.
+then please let Andy Lester know at andy@petdance.com so that he can
+fix the library detection code.
 
 EOF
 }
@@ -71,7 +71,9 @@ tags:
 	ctags -f tags --recurse --totals \
 		--exclude=blib --exclude=t/lib \
 		--exclude=.svn --exclude='*~' \
-		--languages=Perl --langmap=Perl:+.t
+		--languages=C,Perl --langmap=Perl:+.t \
+		.
+
 critic:
 	perlcritic -1 \
 		-profile perlcriticrc \
