@@ -1,0 +1,48 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.7	//
+DIES_ON_ERROR	t/ignore.t	/^DIES_ON_ERROR: {$/;"	l
+ERRORS_ONLY	t/ignore.t	/^ERRORS_ONLY: {$/;"	l
+HTML::Tidy	lib/HTML/Tidy.pm	/^package HTML::Tidy;$/;"	p
+HTML::Tidy::Message	lib/HTML/Tidy/Message.pm	/^package HTML::Tidy::Message;$/;"	p
+IGNORE_BOGOTAG	t/ignore-text.t	/^IGNORE_BOGOTAG: {$/;"	l
+MY	Makefile.PL	/^sub MY::postamble {$/;"	s
+NOTE	Makefile.PL	/^NOTE: It seems that you don't have LWP::Simple installed.$/;"	l
+TIDY_ERROR	lib/HTML/Tidy.pm	/^use constant TIDY_ERROR   => 3;$/;"	c
+TIDY_INFO	lib/HTML/Tidy.pm	/^use constant TIDY_INFO    => 1;$/;"	c
+TIDY_WARNING	lib/HTML/Tidy.pm	/^use constant TIDY_WARNING => 2;$/;"	c
+WARNINGS_ONLY	t/ignore.t	/^WARNINGS_ONLY: {$/;"	l
+WITHOUT_LINE_NUMBERS	t/message.t	/^WITHOUT_LINE_NUMBERS: {$/;"	l
+WITH_LINE_NUMBERS	t/message.t	/^WITH_LINE_NUMBERS: {$/;"	l
+XS	Tidy.c	/^XS(XS_HTML__Tidy__tidy_clean)$/;"	f
+XS	Tidy.c	/^XS(XS_HTML__Tidy__tidy_messages)$/;"	f
+XS	Tidy.c	/^XS(XS_HTML__Tidy__tidy_release_date)$/;"	f
+XS	Tidy.c	/^XS(boot_HTML__Tidy)$/;"	f
+XS_HTML__Tidy__tidy_clean	Tidy.c	/^XS(XS_HTML__Tidy__tidy_clean); \/* prototype to pass -Wmissing-prototypes *\/$/;"	v
+XS_HTML__Tidy__tidy_messages	Tidy.c	/^XS(XS_HTML__Tidy__tidy_messages); \/* prototype to pass -Wmissing-prototypes *\/$/;"	v
+XS_HTML__Tidy__tidy_release_date	Tidy.c	/^XS(XS_HTML__Tidy__tidy_release_date); \/* prototype to pass -Wmissing-prototypes *\/$/;"	v
+_is_keeper	lib/HTML/Tidy.pm	/^sub _is_keeper {$/;"	s
+_load_config_hash	Tidy.c	/^_load_config_hash(TidyDoc tdoc, HV *tidy_options)$/;"	f	file:
+_match_up	t/message.t	/^sub _match_up {$/;"	s
+_parse_errors	lib/HTML/Tidy.pm	/^sub _parse_errors {$/;"	s
+as_string	lib/HTML/Tidy/Message.pm	/^sub as_string {$/;"	s
+clean	lib/HTML/Tidy.pm	/^sub clean {$/;"	s
+clear_messages	lib/HTML/Tidy.pm	/^sub clear_messages {$/;"	s
+column	lib/HTML/Tidy/Message.pm	/^sub column  { my $self = shift; return $self->{_column} }$/;"	s
+critic	Makefile.PL	/^critic:$/;"	l
+file	lib/HTML/Tidy/Message.pm	/^sub file    { my $self = shift; return $self->{_file} }$/;"	s
+ignore	lib/HTML/Tidy.pm	/^sub ignore {$/;"	s
+libtidy_version	lib/HTML/Tidy.pm	/^sub libtidy_version {$/;"	s
+line	lib/HTML/Tidy/Message.pm	/^sub line    { my $self = shift; return $self->{_line} }$/;"	s
+main	Makefile.PL	/^package main;$/;"	p
+messages	lib/HTML/Tidy.pm	/^sub messages {$/;"	s
+new	lib/HTML/Tidy.pm	/^sub new {$/;"	s
+new	lib/HTML/Tidy/Message.pm	/^sub new {$/;"	s
+parse	lib/HTML/Tidy.pm	/^sub parse {$/;"	s
+tags	Makefile.PL	/^tags:$/;"	l
+text	lib/HTML/Tidy/Message.pm	/^sub text    { my $self = shift; return $self->{_text} }$/;"	s
+type	lib/HTML/Tidy/Message.pm	/^sub type    { my $self = shift; return $self->{_type} }$/;"	s
+where	lib/HTML/Tidy/Message.pm	/^sub where {$/;"	s
