@@ -7,38 +7,41 @@
 #include <stdio.h>
 #include <errno.h>
 
-#define HTMLTIDY_LOAD_CONFIG_HASH(tdoc,tidy_options) {                     \
-    HE *entry;                                                             \
-    (void) hv_iterinit(tidy_options);                                      \
-    while ( entry = hv_iternext(tidy_options) ) {                          \
-        I32 key_len;                                                       \
-                                                                           \
-        TidyOptionId id;                                                   \
-                                                                           \
-        SV *sv_data;                                                       \
-        const char *data;                                                  \
-        STRLEN data_len;                                                   \
-                                                                           \
-        const char * const key = hv_iterkey(entry,&key_len);               \
-        const TidyOption opt = tidyGetOptionByName(tdoc,key);              \
-        if (!opt) {                                                        \
-            warn("HTML::Tidy: Unrecognized option: ``%s''\n",key);         \
-            continue;                                                      \
-        }                                                                  \
-                                                                           \
-        id = tidyOptGetId(opt);                                            \
-        sv_data = hv_iterval(tidy_options,entry);                          \
-        data = SvPV(sv_data,data_len);                                     \
-                                                                           \
-        if ( ! tidyOptSetValue(tdoc,id,data) ) {                           \
-            warn("HTML::Tidy: Can't set option: "                          \
-                 "``%s'' to ``%s''\n",                                     \
-                 key, data);                                               \
-        }                                                                  \
-    }                                                                      \
+
+static void
+_load_config_hash(TidyDoc tdoc, HV *tidy_options)
+{
+    HE *entry;
+
+    (void) hv_iterinit(tidy_options);
+
+    while ( entry = hv_iternext(tidy_options) ) {
+        I32 key_len;
+
+        TidyOptionId id;
+
+        SV *sv_data;
+        const char *data;
+        STRLEN data_len;
+
+        const char * const key = hv_iterkey(entry,&key_len);
+        const TidyOption opt = tidyGetOptionByName(tdoc,key);
+
+        if (!opt) {
+            warn("HTML::Tidy: Unrecognized option: \"%s\"\n",key);
+            continue;
+        }
+
+        id = tidyOptGetId(opt);
+        sv_data = hv_iterval(tidy_options,entry);
+        data = SvPV(sv_data,data_len);
+
+        if ( ! tidyOptSetValue(tdoc,id,data) ) {
+            warn("HTML::Tidy: Can't set option: \"%s\" to \"%s\"\n",
+                 key, data);
+        }
+    }
 }
-
-
 MODULE = HTML::Tidy         PACKAGE = HTML::Tidy
 
 PROTOTYPES: ENABLE
@@ -62,7 +65,7 @@ _tidy_messages(input, configfile, tidy_options)
         }
 
         if ( rc >= 0 ) {
-            HTMLTIDY_LOAD_CONFIG_HASH(tdoc,tidy_options);
+            _load_config_hash(tdoc,tidy_options);
         }
 
         if ( rc >= 0 ) {
@@ -96,7 +99,8 @@ _tidy_messages(input, configfile, tidy_options)
             rc = -1;
         }
 
-        tidyBufFree( &errbuf );
+        if ( errbuf.bp )
+            tidyBufFree( &errbuf );
         tidyRelease( tdoc );
 
         if ( rc < 0 ) {
@@ -132,7 +136,7 @@ _tidy_clean(input, configfile, tidy_options)
         }
 
         if ( rc >= 0 ) {
-            HTMLTIDY_LOAD_CONFIG_HASH(tdoc,tidy_options);
+            _load_config_hash( tdoc, tidy_options );
         }
 
         if ( rc >= 0 ) {
