@@ -52,6 +52,7 @@ _tidy_messages(input, configfile, tidy_options)
         const char* newline;
         int rc = 0;
     PPCODE:
+        tidyBufInit(&errbuf);
         rc = ( tidyOptSetValue( tdoc, TidyCharEncoding, "utf8" ) ? rc : -1 );
 
         if ( (rc >= 0 ) && configfile && *configfile ) {
@@ -115,6 +116,8 @@ _tidy_clean(input, configfile, tidy_options)
         const char* newline;
         int rc = 0;
     PPCODE:
+        tidyBufInit(&output);
+        tidyBufInit(&errbuf);
         /* Set our default first. */
         /* Don't word-wrap */
         rc = ( tidyOptSetInt( tdoc, TidyWrapLen, 0 ) ? rc : -1 );
