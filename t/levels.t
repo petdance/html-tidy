@@ -16,15 +16,26 @@ my @expected = split /\n/, q{
 - (1:1) Warning: missing <!DOCTYPE> declaration
 - (23:1) Error: <bogotag> is not recognized!
 - (23:1) Warning: discarding unexpected <bogotag>
-- (24:78) Warning: unescaped & which should be written as &amp;
-- (24:99) Warning: unescaped & which should be written as &amp;
+- (24:XX) Warning: unescaped & which should be written as &amp;
+- (24:XX) Warning: unescaped & which should be written as &amp;
 };
 chomp @expected;
 shift @expected; # First one's blank
 
 my @messages = map { $_->as_string } $tidy->messages;
 s/[\r\n]+\z// for @messages;
+munge_returned( \@messages );
 is_deeply( \@messages, \@expected, 'Matching messages' );
+
+sub munge_returned {
+    # non-1 line numbers are not reliable across libtidies
+    my $returned = shift;
+    my $start_line = shift || qq{-};
+    for ( my $i = 0; $i < scalar @{$returned}; $i++ ) {
+        next if $returned->[$i] =~ m/$start_line \(\d+:1\)/;
+        $returned->[$i] =~ s/$start_line \((\d+):(\d+)\)/$start_line ($1:XX)/;
+    }
+}
 
 __DATA__
 <HTML>

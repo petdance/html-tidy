@@ -11,8 +11,8 @@ BEGIN {
 my $html = do { local $/; <DATA> };
 
 my @expected_messages = split /\n/, q{
-DATA (24:78) Warning: unescaped & which should be written as &amp;
-DATA (24:99) Warning: unescaped & which should be written as &amp;
+DATA (24:XX) Warning: unescaped & which should be written as &amp;
+DATA (24:XX) Warning: unescaped & which should be written as &amp;
 };
 
 chomp @expected_messages;
@@ -28,10 +28,20 @@ IGNORE_BOGOTAG: {
     $tidy->parse( 'DATA', $html );
 
     my @returned = map { $_->as_string } $tidy->messages;
+    munge_returned( \@returned, 'DATA' );
     s/[\r\n]+\z// for @returned;
     is_deeply( \@returned, \@expected_messages, 'Matching warnings' );
 }
 
+sub munge_returned {
+    # non-1 line numbers are not reliable across libtidies
+    my $returned = shift;
+    my $start_line = shift || qq{-};
+    for ( my $i = 0; $i < scalar @{$returned}; $i++ ) {
+        next if $returned->[$i] =~ m/$start_line \(\d+:1\)/;
+        $returned->[$i] =~ s/$start_line \((\d+):(\d+)\)/$start_line ($1:XX)/;
+    }
+}
 __DATA__
 <HTML>
 <HEAD>

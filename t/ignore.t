@@ -11,8 +11,8 @@ my $html = do { local $/ = undef; <DATA> };
 my @expected_warnings = split /\n/, q{
 - (1:1) Warning: missing <!DOCTYPE> declaration
 - (23:1) Warning: discarding unexpected <bogotag>
-- (24:78) Warning: unescaped & which should be written as &amp;
-- (24:99) Warning: unescaped & which should be written as &amp;
+- (24:XX) Warning: unescaped & which should be written as &amp;
+- (24:XX) Warning: unescaped & which should be written as &amp;
 };
 chomp @expected_warnings;
 shift @expected_warnings; # First one's blank
@@ -32,6 +32,7 @@ WARNINGS_ONLY: {
 
     my @returned = map { $_->as_string } $tidy->messages;
     s/[\r\n]+\z// for @returned;
+    munge_returned( \@returned );
     is_deeply( \@returned, \@expected_warnings, 'Matching warnings' );
 }
 
@@ -55,6 +56,15 @@ DIES_ON_ERROR: {
     like( $@, qr/^Invalid ignore type.+blongo/, 'Throws an error' );
 }
 
+sub munge_returned {
+    # non-1 line numbers are not reliable across libtidies
+    my $returned = shift;
+    my $start_line = shift || qq{-}; 
+    for ( my $i = 0; $i < scalar @{$returned}; $i++ ) {
+        next if $returned->[$i] =~ m/$start_line \(\d+:1\)/;
+        $returned->[$i] =~ s/$start_line \((\d+):(\d+)\)/$start_line ($1:XX)/;
+    }
+}
 __DATA__
 <HTML>
 <HEAD>
