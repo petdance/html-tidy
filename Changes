@@ -2,6 +2,11 @@ Revision history for Perl extension HTML::Tidy.
 
 1.50 NEXT
 
+    HTML::Tidy now relies on the libtidy that Andy Lester maintains on github.
+
+    http://github.com/petdance/libtidy
+
+
     [ENHANCEMENTS]
     Now includes support for TIDY_INFO messages.
 

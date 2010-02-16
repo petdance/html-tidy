@@ -8,7 +8,7 @@ use warnings;
 use ExtUtils::MakeMaker;
 use ExtUtils::Liblist;
 
-my @vars = ExtUtils::Liblist->ext( '-L/sw/lib -ltidy', 0, 1 );
+my @vars = ExtUtils::Liblist->ext( '-ltidy', 0, 1 );
 my $libs = $vars[2];
 
 if ( !$libs ) {
@@ -16,9 +16,12 @@ if ( !$libs ) {
     print <<'EOF';
 
 It seems that you don't have libtidy installed.  HTML::Tidy does no
-real work on its own.  See the section "INSTALLING LIBTIDY" in Tidy.pm
-for a step-by-step walkthrough of building the lib.  You can also refer
-to http://tidy.sourceforge.net/.
+real work on its own.  It's just a wrapper aound libtidy.
+
+HTML::Tidy is only tested to work with libtidy hosted at
+http://github.com/petdance/libtidy.  This is mostly the same as the one
+at http://tidy.sourceforge.net/, with some changes, such as adding a
+version number so that we can tell what version we're working with.
 
 If you do have libtidy installed, and I just haven't detected it,
 go ahead and try building.  If HTML::Tidy builds and tests correctly,

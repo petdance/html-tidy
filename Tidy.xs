@@ -192,11 +192,11 @@ _tidy_clean(input, configfile, tidy_options)
 
 
 SV*
-_tidy_release_date()
+_tidy_version()
     PREINIT:
         const char* version;
     CODE:
-        version = tidyReleaseDate();
+        version = tidyVersion();
         RETVAL = newSVpv(version,0); /* will be automatically "mortalized" */
     OUTPUT:
         RETVAL

@@ -9,13 +9,9 @@ BEGIN {
     use_ok( 'HTML::Tidy' );
 }
 
-my @months = qw( January February March April May June 
-                 July August September October November December);
-my $months = join '|', @months;
-
 my $version_string = HTML::Tidy->libtidy_version();
-like( $version_string, qr/\d\d? ($months) \d\d\d\d/, 'Valid version string' );
+like( $version_string, qr/^\d\.\d{2,}$/, 'Valid version string' );
 
 my $version_nr = HTML::Tidy->libtidy_version( {numeric =>1 } );
-cmp_ok( $version_nr, '>=', 20050901, 'Version is greater than 9/1/2005' );
+cmp_ok( $version_nr, '>=', '0.90', 'Version is greater than 0.90, which is the one I maintain' );
 
