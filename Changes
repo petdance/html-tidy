@@ -1,6 +1,6 @@
 Revision history for Perl extension HTML::Tidy.
 
-1.50 NEXT
+1.50    Tue Feb 16 12:04:55 CST 2010
 
     HTML::Tidy now relies on the libtidy that Andy Lester maintains on github.
 
