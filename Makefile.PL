@@ -8,22 +8,22 @@ use warnings;
 use ExtUtils::MakeMaker;
 use ExtUtils::Liblist;
 
-my @vars = ExtUtils::Liblist->ext( '-ltidy', 0, 1 );
+my @vars = ExtUtils::Liblist->ext( '-ltidyp', 0, 1 );
 my $libs = $vars[2];
 
 if ( !$libs ) {
-    $libs = '-ltidy';
+    $libs = '-ltidyp';
     print <<'EOF';
 
 It seems that you don't have libtidy installed.  HTML::Tidy does no
-real work on its own.  It's just a wrapper aound libtidy.
+real work on its own.  It's just a wrapper aound libtidyp.
 
-HTML::Tidy is only tested to work with libtidy hosted at
+HTML::Tidy is only tested to work with libtidyp hosted at
 http://github.com/petdance/libtidy.  This is mostly the same as the one
 at http://tidy.sourceforge.net/, with some changes, such as adding a
 version number so that we can tell what version we're working with.
 
-If you do have libtidy installed, and I just haven't detected it,
+If you do have libtidyp installed, and I just haven't detected it,
 go ahead and try building.  If HTML::Tidy builds and tests correctly,
 then please let Andy Lester know at andy@petdance.com so that he can
 fix the library detection code.
@@ -58,7 +58,7 @@ WriteMakefile(
 
     LIBS                => [$libs],
     NEEDS_LINKING       => 1,
-    INC                 => '-I. -I/usr/include/tidy -I/usr/local/include/tidy -I/sw/include/tidy',
+    INC                 => '-I. -I/usr/include/tidyp -I/usr/local/include/tidyp -I/sw/include/tidyp',
 
     EXE_FILES           => [qw(bin/webtidy)],
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },

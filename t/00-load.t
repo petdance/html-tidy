@@ -12,5 +12,5 @@ BEGIN {
 }
 eval {
     # For better test reporting
-    diag( "Testing HTML::Tidy $HTML::Tidy::VERSION, Perl $]; tidylib " . HTML::Tidy->libtidy_version());
+    diag( "Testing HTML::Tidy $HTML::Tidy::VERSION, Perl $]; libtidyp" . HTML::Tidy->libtidyp_version() );
 }

@@ -339,14 +339,14 @@ sub _is_keeper {
     return 1;
 }
 
-=head2 libtidy_version()
+=head2 libtidyp_version()
 
 Returns the version of the underling tidy library.
 
 =cut
 
-sub libtidy_version {
-    my $version_str = _tidy_version();
+sub libtidyp_version {
+    my $version_str = _tidyp_version();
 
     return $version_str;
 }

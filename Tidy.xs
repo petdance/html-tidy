@@ -192,7 +192,7 @@ _tidy_clean(input, configfile, tidy_options)
 
 
 SV*
-_tidy_version()
+_tidyp_version()
     PREINIT:
         const char* version;
     CODE:
