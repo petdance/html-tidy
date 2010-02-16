@@ -2,7 +2,7 @@
 #include "perl.h"
 #include "XSUB.h"
 
-#include <tidy.h>
+#include <tidyp.h>
 #include <buffio.h>
 #include <stdio.h>
 #include <errno.h>
