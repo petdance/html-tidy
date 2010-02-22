@@ -8,7 +8,7 @@ use warnings;
 use ExtUtils::MakeMaker;
 use ExtUtils::Liblist;
 
-my @vars = ExtUtils::Liblist->ext( '-ltidyp', 0, 1 );
+my @vars = ExtUtils::Liblist->ext( '-L/usr/lib -L/usr/local/lib -ltidyp', 0, 1 );
 my $libs = $vars[2];
 
 if ( !$libs ) {
