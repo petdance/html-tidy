@@ -15,11 +15,11 @@ if ( !$libs ) {
     $libs = '-ltidyp';
     print <<'EOF';
 
-It seems that you don't have libtidy installed.  HTML::Tidy does no
+It seems that you don't have libtidyp installed.  HTML::Tidy does no
 real work on its own.  It's just a wrapper aound libtidyp.
 
 HTML::Tidy is only tested to work with libtidyp hosted at
-http://github.com/petdance/libtidy.  This is mostly the same as the one
+http://github.com/petdance/libtidyp.  This is mostly the same as the one
 at http://tidy.sourceforge.net/, with some changes, such as adding a
 version number so that we can tell what version we're working with.
 
