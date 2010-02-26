@@ -1,12 +1,18 @@
 Revision history for Perl extension HTML::Tidy.
 
-1.52
-    HTML::Tidy now relies on the libtidyp that Andy Lester maintains on github.
+NEXT
+    Now relies on Perl 5.8.  I'm not at all interested in supporting
+    ancient Perl version.
+
+    HTML::Tidy now relies on the libtidyp that Andy Lester maintains
+    on github.
 
     http://github.com/petdance/libtidyp
 
     [ENHANCEMENTS]
     Now includes support for TIDY_INFO messages.
+
+    Improve support for Windows platforms.
 
     [FIXES]
     Fixed a segfault if there are no errors.
