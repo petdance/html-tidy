@@ -59,7 +59,7 @@ WriteMakefile(
 
     LIBS                => [$libs],
     NEEDS_LINKING       => 1,
-    INC                 => "-I. -I/usr/include/tidyp -I/usr/local/include/tidyp -I$Config{usrinc}/tidy",
+    INC                 => "-I. -I/usr/include/tidyp -I/usr/local/include/tidyp -I$Config{usrinc}/tidyp",
 
     EXE_FILES           => [qw(bin/webtidy)],
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
