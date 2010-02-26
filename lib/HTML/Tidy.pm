@@ -13,11 +13,11 @@ HTML::Tidy - (X)HTML validation in a Perl object
 
 =head1 VERSION
 
-Version 1.50
+Version 1.52
 
 =cut
 
-our $VERSION = '1.50';
+our $VERSION = '1.52';
 
 =head1 SYNOPSIS
 
@@ -67,18 +67,22 @@ Optionally you can give a hashref of configuration parms.
 
 This configuration file will be read and used when you clean or parse an HTML file.
 
-You can also pass options directly to libtidy.
+You can also pass options directly to libtidyp.
 
     my $tidy = HTML::Tidy->new( {
                                     output_xhtml => 1,
                                     tidy_mark => 0,
                                 } );
 
-See L<http://tidy.sourceforge.net/docs/quickref.html> or 
-C<tidy -help-config> for the list of options supported by libtidy.
+See C<tidyp -help-config> for the list of options supported by libtidyp.
 
 The following options are not supported by C<HTML::Tidy>:
-quiet
+
+=over 4
+
+=item * quiet
+
+=back
 
 =cut
 
@@ -358,12 +362,12 @@ XSLoader::load('HTML::Tidy', $VERSION);
 
 __END__
 
-=head1 INSTALLING LIBTIDY
+=head1 INSTALLING LIBTIDYP
 
-L<HTML::Tidy|HTML::Tidy> requires that C<libtidy> be installed on your system.
-You can obtain libtidy through your distribution's package manager
+L<HTML::Tidy|HTML::Tidy> requires that C<libtidyp> be installed on your system.
+You can obtain libtidyp through your distribution's package manager
 (make sure you install the development package with headers), or from
-the libtidy website at L<http://tidy.sourceforge.net/src/tidy_src.tgz>.
+the libtidyp website at L<http://github.com/petdance/libtidyp>.
 
 =head1 CONVERTING FROM C<HTML::Lint>
 
@@ -373,11 +377,11 @@ L<HTML::Tidy|HTML::Tidy> is different from L<HTML::Lint|HTML::Lint> in a number 
 
 =item * It's not pure Perl
 
-C<HTML::Tidy> is mostly a happy wrapper around libtidy.
+C<HTML::Tidy> is mostly a happy wrapper around libtidyp.
 
 =item * The real work is done by someone else
 
-Changes to libtidy may come down the pipe that I don't have control over.
+Changes to libtidyp may come down the pipe that I don't have control over.
 That's the price we pay for having it do a darn good job.
 
 =item * It's no longer bundled with its C<Test::> counterpart

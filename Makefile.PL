@@ -9,21 +9,20 @@ use ExtUtils::MakeMaker;
 use ExtUtils::Liblist;
 use Config;
 
-my @vars = ExtUtils::Liblist->ext( '-ltidyp', 0, 1 );
+my @vars = ExtUtils::Liblist->ext( '-L/usr/lib -L/usr/local/lib -ltidyp', 0, 1 );
 my $libs = $vars[2];
 
 if ( !$libs ) {
     $libs = '-ltidyp';
     print <<'EOF';
 
-It seems that you don't have libtidyp installed.  HTML::Tidy does
-no real work on its own.  It's just a wrapper aound libtidyp.
+It seems that you don't have libtidyp installed.  HTML::Tidy does no
+real work on its own.  It's just a wrapper aound libtidyp.
 
 HTML::Tidy is only tested to work with libtidyp hosted at
-http://github.com/petdance/libtidyp.  This is mostly the same as
-the one at http://tidy.sourceforge.net/, with some changes, such
-as adding a version number so that we can tell what version we're
-working with.
+http://github.com/petdance/libtidyp.  This is mostly the same as the one
+at http://tidy.sourceforge.net/, with some changes, such as adding a
+version number so that we can tell what version we're working with.
 
 If you do have libtidyp installed, and I just haven't detected it,
 go ahead and try building.  If HTML::Tidy builds and tests correctly,
