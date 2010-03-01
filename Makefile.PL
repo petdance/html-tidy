@@ -9,12 +9,24 @@ use ExtUtils::MakeMaker;
 use ExtUtils::Liblist;
 use Config;
 
-my @vars = ExtUtils::Liblist->ext( '-L/usr/lib -L/usr/local/lib -ltidyp', 0, 1 );
-my $libs = $vars[2];
+my $libs = '-ltidyp';
+my $inc = "-I. -I/usr/include/tidyp -I/usr/local/include/tidyp -I$Config{usrinc}/tidyp";
 
-if ( !$libs ) {
-    $libs = '-ltidyp';
-    print <<'EOF';
+eval { require Alien::Tidyp; };
+
+if ( !$@ ) {
+    print "Gonna use tidyp via Alien::Tidyp\n";
+    $libs = Alien::Tidyp->config('LIBS');
+    $inc = Alien::Tidyp->config('INC');
+}
+else {
+    print "Alien::Tidyp not found, gonna look for tidyp on your system\n";
+    my @vars = ExtUtils::Liblist->ext( '-L/usr/lib -L/usr/local/lib -ltidyp', 0, 1 );
+    $libs = $vars[2];
+
+    if ( !$libs ) {
+        $libs = '-ltidyp';
+        print <<'EOF';
 
 It seems that you don't have libtidyp installed.  HTML::Tidy does no
 real work on its own.  It's just a wrapper aound libtidyp.
@@ -30,6 +42,7 @@ then please let Andy Lester know at andy@petdance.com so that he can
 fix the library detection code.
 
 EOF
+    }
 }
 
 eval { require LWP::Simple; };
@@ -59,7 +72,7 @@ WriteMakefile(
 
     LIBS                => [$libs],
     NEEDS_LINKING       => 1,
-    INC                 => "-I. -I/usr/include/tidyp -I/usr/local/include/tidyp -I$Config{usrinc}/tidyp",
+    INC                 => $inc,
 
     EXE_FILES           => [qw(bin/webtidy)],
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
