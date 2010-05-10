@@ -27,7 +27,7 @@ my @messages = $tidy->messages( $clean );
 is( scalar @messages, 0, q{The cleaned stuff shouldn't have any errors} );
 diag( 'But they do...', Dumper(\@messages) ) if @messages;
 
-$clean =~ s/"HTML Tidy.+w3\.org"/"Tidy"/;
+$clean =~ s/"(HTML Tidy|tidyp).+w3\.org"/"Tidy"/;
 
 my $expected = do { local $/ = undef; <DATA> };
 is( $clean, $expected, 'Cleaned up properly' );

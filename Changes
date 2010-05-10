@@ -17,6 +17,8 @@ NEXT
     [FIXES]
     Fixed a segfault if there are no errors.
 
+    Allow for either "tidyp" or "HTML Tidy" as a program name in tests.
+
 
 1.08    Fri Apr 13 22:02:20 CDT 2007
     First new version with the massive changes from Jonathan Rockway.

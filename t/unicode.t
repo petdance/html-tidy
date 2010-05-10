@@ -32,6 +32,7 @@ my $clean = $tidy->clean( $html );
 ok(utf8::is_utf8($clean), 'cleaned output is also unicode');
 
 $clean =~ s/"HTML Tidy.+w3\.org"/"Tidy"/;
+$clean =~ s/"(HTML Tidy|tidyp).+w3\.org"/"Tidy"/;
 is($clean, $reference, q{Cleanup didn't break anything});
 
 my @messages = $tidy->messages;
