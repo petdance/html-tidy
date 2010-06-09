@@ -67,14 +67,14 @@ Optionally you can give a hashref of configuration parms.
 
 This configuration file will be read and used when you clean or parse an HTML file.
 
-You can also pass options directly to libtidyp.
+You can also pass options directly to tidyp.
 
     my $tidy = HTML::Tidy->new( {
                                     output_xhtml => 1,
                                     tidy_mark => 0,
                                 } );
 
-See C<tidyp -help-config> for the list of options supported by libtidyp.
+See C<tidyp -help-config> for the list of options supported by tidyp.
 
 The following options are not supported by C<HTML::Tidy>:
 
@@ -343,13 +343,18 @@ sub _is_keeper {
     return 1;
 }
 
+=head2 tidyp_version()
+
 =head2 libtidyp_version()
 
-Returns the version of the underling tidy library.
+Returns the version of the underling tidyp library.
 
 =cut
 
-sub libtidyp_version {
+# backcompat
+sub libtidyp_version { shift->tidyp_version }
+
+sub tidyp_version {
     my $version_str = _tidyp_version();
 
     return $version_str;
@@ -362,7 +367,7 @@ XSLoader::load('HTML::Tidy', $VERSION);
 
 __END__
 
-=head1 INSTALLING LIBTIDYP
+=head1 INSTALLING TIDYP
 
 L<HTML::Tidy|HTML::Tidy> requires that C<tidyp> be installed on your system.
 You can obtain tidyp through your distribution's package manager
@@ -377,11 +382,11 @@ L<HTML::Tidy|HTML::Tidy> is different from L<HTML::Lint|HTML::Lint> in a number 
 
 =item * It's not pure Perl
 
-C<HTML::Tidy> is mostly a happy wrapper around libtidyp.
+C<HTML::Tidy> is mostly a happy wrapper around tidyp.
 
 =item * The real work is done by someone else
 
-Changes to libtidyp may come down the pipe that I don't have control over.
+Changes to tidyp may come down the pipe that I don't have control over.
 That's the price we pay for having it do a darn good job.
 
 =item * It's no longer bundled with its C<Test::> counterpart

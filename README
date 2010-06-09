@@ -6,7 +6,7 @@ a replacement for HTML::Lint.
 
 INSTALLATION
 
-You need libtidy to build HTML::Tidy. Check section INSTALLING TIDY on this
+You need tidy to build HTML::Tidy. Check section INSTALLING TIDY on this
 document for more information.
 
 To install this module type the following:
@@ -18,7 +18,7 @@ To install this module type the following:
 
 INSTALLING TIDY
 
-You can get a distribution for libtidy at:
+You can get a distribution for tidy at:
 
     http://tidy.sourceforge.net/src/tidy_src.tgz
 
@@ -42,7 +42,7 @@ Check out the source tree:
 
 OS-SPECIFIC NOTES
 
-If you're on Debian, you can install the libtidy-dev package.
+If you're on Debian, you can install the tidy-dev package.
 
 If you're on Mac OS X and you've got Fink, you can install the
 tidy-dev package (you must use the *source* package; the binary one
@@ -68,7 +68,7 @@ Install the libs, headers and the tidy executable:
 If you're on Mac OS X, you'll have to run ranlib again on the
 installed lib:
 
-    $ sudo ranlib /usr/local/lib/libtidy.a
+    $ sudo ranlib /usr/local/lib/tidy.a
 
 Once these steps are complete, you'll be able to go back to HTML::Tidy
 and build it normally.
