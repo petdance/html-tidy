@@ -364,10 +364,10 @@ __END__
 
 =head1 INSTALLING LIBTIDYP
 
-L<HTML::Tidy|HTML::Tidy> requires that C<libtidyp> be installed on your system.
-You can obtain libtidyp through your distribution's package manager
+L<HTML::Tidy|HTML::Tidy> requires that C<tidyp> be installed on your system.
+You can obtain tidyp through your distribution's package manager
 (make sure you install the development package with headers), or from
-the libtidyp website at L<http://github.com/petdance/libtidyp>.
+the tidyp Git repository at L<http://github.com/petdance/tidyp>.
 
 =head1 CONVERTING FROM C<HTML::Lint>
 
@@ -428,7 +428,7 @@ L<http://github.com/petdance/html-tidy/issues>
 
 L<http://search.cpan.org/dist/HTML-Tidy>
 
-=item * Subversion source code repository
+=item * Git source code repository
 
 L<http://github.com/petdance/html-tidy>
 
