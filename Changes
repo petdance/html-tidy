@@ -1,96 +1,23 @@
 Revision history for Perl extension HTML::Tidy.
 
-NEXT
-    Now relies on Perl 5.8.  I'm not at all interested in supporting
-    ancient Perl version.
+1.52    Wed May 12 2010
+=======================
+First release since the major overhaul that relies on libtidyp.
 
-    HTML::Tidy now relies on the libtidyp that Andy Lester maintains
-    on github.
+Now relies on Perl 5.8.  I'm not at all interested in supporting
+ancient Perl version.
 
-    http://github.com/petdance/libtidyp
+HTML::Tidy now relies on the libtidyp that Andy Lester maintains
+on github.
 
-    [ENHANCEMENTS]
-    Now includes support for TIDY_INFO messages.
+http://github.com/petdance/libtidyp
 
-    Improve support for Windows platforms.
+[ENHANCEMENTS]
+Now includes support for TIDY_INFO messages.
 
-    [FIXES]
-    Fixed a segfault if there are no errors.
+Improve support for Windows platforms.
 
-    Allow for either "tidyp" or "HTML Tidy" as a program name in tests.
+[FIXES]
+Fixed a segfault if there are no errors.
 
-
-1.08    Fri Apr 13 22:02:20 CDT 2007
-    First new version with the massive changes from Jonathan Rockway.
-
-
-1.07_01 Fri Nov 10 22:12:59 CST 2006
-
-    We dumped a lot of work in here.  Suffice to say that it's
-    radically different.
-
-    [INTERNALS]
-    * Added support for Perl::Critic, and a "make critic" target.
-
-1.06    Fri Aug 19 10:23:29 CDT 2005
-    NO FUNCTIONAL CHANGES.  Just a version bump and some doc fixes.
-
-
-1.05_02 Wed Apr 20 22:43:31 CDT 2005
-    [FIXES]
-    * Made clean() return undef if it has no input.  Thanks to
-        Dominique Quatravax.  See RT #8051.
-    * Removed line-endings so that we're happy cross-platform in
-        the tests.  Thanks to the anonymous contributor of RT #7836.
-
-    [ENHANCEMENTS]
-    * Added support for config files.  Thanks to Anders Ardo!
-        See RT #11120.
-
-
-1.05_01 Thu Sep  2 21:01:52 CDT 2004
-    [FIXES]
-    * Fixed some segfaults when calling $tidy->clean().  Thanks
-        to Aaron Patterson, fixes CPAN #7254.
-
-    * Made the Makefile.PL more portable under Mac OS X where
-        libtidy had been installed by Fink.  Also added some
-        Debian and OS X notes to the README.  Thanks to Dan
-        Friedman.
-
-
-1.04    Wed May 12 15:18:37 CDT 2004
-    [FIXES]
-    * If for some reason, Tidy can't create the cleaned up doc,
-        we don't segfault.  Added a test to check for it with an HTML
-        set that we know made it segfault in 1.02.
-
-    [ENHANCEMENTS]
-    * Portability enhancements from Dave Rolsky.
-
-
-1.02    Wed Mar  3 22:43:57 CST 2004
-    [ENHANCEMENTS]
-    * Added clean() method for cleaning up using the Tidy magic.
-        Thanks to Ben Trott.
-
-    [FIXES]
-    * Message parsing is split on a Ctrl-J instead of \n now.
-        This should fix the test problems on Win32.
-
-    * Removed the #include "ppport.h" from Tidy.xs so it can compile
-        on Win32.  Thanks to crazyinsomniac.
-
-    [MISCELLANEOUS]
-    * Moved the install directions for tidylib into the README.
-
-
-1.00    Wed Feb 25 22:19:28 CST 2004
-
-    First real version, released on an unsuspecting world.
-
-    If you were one of the ones to get in on 0.01 thru 0.04, you may
-    want to check your code.  The API has changed some.  I know that
-    parse_file() is now parse(), for example.  There may be others.
-
-    Going forward, of course, I'll note any other API changes here.
+Allow for either "tidyp" or "HTML Tidy" as a program name in tests.
