@@ -8,7 +8,7 @@ INSTALLING TIDYP
 ================
 You need the tidyp library to build HTML::Tidy.  If you
 haven't installed it, you can get a source distribution at
-http://github.com/petdance/tidyp/downloads
+[Github](http://github.com/petdance/tidyp/downloads).
 
 
 INSTALLATION
