@@ -10,6 +10,9 @@ You need the tidyp library to build HTML::Tidy.  If you
 haven't installed it, you can get a source distribution at
 [Github](http://github.com/petdance/tidyp/downloads).
 
+You can also try installing the CPAN module Alien::Tidyp, which
+encapsulates the tidyp installation.
+
 
 INSTALLATION
 ============
