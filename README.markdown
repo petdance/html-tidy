@@ -1,83 +1,31 @@
 HTML::Tidy
 ==========
-
 HTML::Tidy is an HTML checker in a handy dandy object.  It's meant as
 a replacement for HTML::Lint.
 
+
+INSTALLING TIDYP
+================
+You need the tidyp library to build HTML::Tidy.  If you haven't installed
+it, you can get a source distribution:
+
+    http://github.com/petdance/tidyp/downloads
+
+
 INSTALLATION
-
-You need tidy to build HTML::Tidy. Check section INSTALLING TIDY on this
-document for more information.
-
-To install this module type the following:
+============
+Once you have libtidyp installed, install HTML::Tidy like any standard
+Perl module.
 
    perl Makefile.PL
    make
    make test
    make install
 
-INSTALLING TIDY
 
-You can get a distribution for tidy at:
+COPYRIGHT AND LICENSE
+=====================
+Copyright (C) 2004-2010 by Andy Lester
 
-    http://tidy.sourceforge.net/src/tidy_src.tgz
-
-You can also check out from the CVS tree with the following two steps:
-
-Login in to the anonymous CVS server at SourceForge:
-
-    $ cvs -d:pserver:anonymous@cvs.sf.net:/cvsroot/tidy login
-    (Logging in to anonymous@cvs.sf.net)
-    CVS password: [hit ENTER]
-
-Check out the source tree:
-
-    $ cvs -d:pserver:anonymous@cvs.sf.net:/cvsroot/tidy co tidy
-    cvs server: Updating tidy
-    cvs server: Updating tidy/CVSROOT
-    U tidy/CVSROOT/checkoutlist
-    U tidy/CVSROOT/commitinfo
-    ... many many files come out ...
-
-
-OS-SPECIFIC NOTES
-
-If you're on Debian, you can install the tidy-dev package.
-
-If you're on Mac OS X and you've got Fink, you can install the
-tidy-dev package (you must use the *source* package; the binary one
-is too old). Otherwise, you'll need to tell the Makefile that you
-use ranlib:
-
-    $ export set RANLIB=ranlib
-
-Change to the directory with the Makefile in it, and run make.
-This example uses the GNU make Makefile.
-
-    $ cd tidy/build/gmake/
-
-    $ make
-    if [ ! -d ./obj ]; then mkdir ./obj; fi
-    gcc -o obj/access.o ...
-    ... etc etc etc ...
-
-Install the libs, headers and the tidy executable:
-
-    $ sudo make install
-
-If you're on Mac OS X, you'll have to run ranlib again on the
-installed lib:
-
-    $ sudo ranlib /usr/local/lib/tidy.a
-
-Once these steps are complete, you'll be able to go back to HTML::Tidy
-and build it normally.
-
-
-COPYRIGHT AND LICENCE
-
-Copyright (C) 2004 by Andy Lester
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.8.1 or,
-at your option, any later version of Perl 5 you may have available.
+This library is free software.  It may be redistributed and modified
+under the Artistic License v2.0.
