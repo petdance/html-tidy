@@ -2,6 +2,9 @@ Revision history for Perl extension HTML::Tidy.
 
 NEXT
 =======================
+[FIXES]
+Fixed incorrect calls to croak().  Thanks, Steve Grazzini.
+
 [DOCUMENTATION]
 Updating all docs referring to libtidyp and Alien::Libtidyp.
 

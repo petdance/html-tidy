@@ -117,7 +117,7 @@ sub new {
         $newkey =~ tr/_/-/;
 
         if ( grep {$newkey eq $_} @unsupported_options ) {
-            croak( "Unsupported option: $newkey" );
+            Carp::croak( "Unsupported option: $newkey" );
         }
 
         $self->{tidy_options}->{$newkey} = $args->{$key};
@@ -219,7 +219,7 @@ sub parse {
     my $self = shift;
     my $filename = shift;
     if (@_ == 0) {
-        croak('Usage: parser($filename,$str [, $str...])') ## no critic
+        Carp::croak('Usage: parser($filename,$str [, $str...])') ## no critic
     }
     my $html = join( '', @_ );
 
@@ -304,7 +304,7 @@ Returns the cleaned string as a single string.
 sub clean {
     my $self = shift;
     if (@_ == 0) {
-        croak('Usage: clean($str [, $str...])') ## no critic
+        Carp::croak('Usage: clean($str [, $str...])') ## no critic
     }
     my $text = join( '', @_ );
 
