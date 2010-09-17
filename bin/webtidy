@@ -19,7 +19,7 @@ GetOptions(
 ) or $help = 1;
 
 if ( !@ARGV || $help ) {
-    print "webtidy v$HTML::Tidy::VERSION\n";
+    print "webtidy v$HTML::Tidy::VERSION using tidyp v" . HTML::Tidy::tidyp_version() . "\n";
     print <DATA>;
     exit 1;
 }

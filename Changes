@@ -1,5 +1,12 @@
 Revision history for Perl extension HTML::Tidy.
 
+NEXT
+====================================
+[ENHANCEMENTS]
+webtidy's version statement now shows the version number of the underlying
+tidyp library.
+
+
 1.54    Fri Sep 17 00:44:36 CDT 2010
 ====================================
 Please note that the bug tracker for HTML::Tidy is now at
