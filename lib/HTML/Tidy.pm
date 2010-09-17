@@ -24,7 +24,7 @@ our $VERSION = '1.54';
     use HTML::Tidy;
 
     my $tidy = HTML::Tidy->new( {config_file => 'path/to/config'} );
-    $tidy->ignore( type => TIDY_WARNING, typed => TIDY_INFO );
+    $tidy->ignore( type => TIDY_WARNING, type => TIDY_INFO );
     $tidy->parse( "foo.html", $contents_of_foo );
 
     for my $message ( $tidy->messages ) {
