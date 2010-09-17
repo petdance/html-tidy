@@ -1,5 +1,11 @@
 Revision history for Perl extension HTML::Tidy.
 
+NEXT
+=======================
+[DOCUMENTATION]
+Updating all docs referring to libtidyp and Alien::Libtidyp.
+
+
 1.52    Wed May 12 2010
 =======================
 First release since the major overhaul that relies on libtidyp.
