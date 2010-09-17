@@ -13,11 +13,11 @@ HTML::Tidy - (X)HTML validation in a Perl object
 
 =head1 VERSION
 
-Version 1.52
+Version 1.54
 
 =cut
 
-our $VERSION = '1.52';
+our $VERSION = '1.54';
 
 =head1 SYNOPSIS
 
@@ -417,6 +417,10 @@ You can also look for information at:
 
 =over 4
 
+=item * HTML::Tidy's issue queue at github
+
+L<http://github.com/petdance/html-tidy/issues>
+
 =item * AnnoCPAN: Annotated CPAN documentation
 
 L<http://annocpan.org/dist/HTML-Tidy>
@@ -425,11 +429,7 @@ L<http://annocpan.org/dist/HTML-Tidy>
 
 L<http://cpanratings.perl.org/d/HTML-Tidy>
 
-=item * HTML::Tidy's issue queue at github
-
-L<http://github.com/petdance/html-tidy/issues>
-
-=item * Search CPAN
+=item * search.cpan.org
 
 L<http://search.cpan.org/dist/HTML-Tidy>
 
@@ -451,8 +451,7 @@ Andy Lester, C<< <andy at petdance.com> >>
 
 Copyright (C) 2005-2010 by Andy Lester
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.8.1 or,
-at your option, any later version of Perl 5 you may have available.
+This library is free software.  You mean modify or distribute it under
+the Artistic License v2.0.
 
 =cut
