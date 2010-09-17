@@ -6,7 +6,7 @@ Makefile.PL
 MANIFEST
 perlcriticrc
 ppport.h
-README
+README.markdown
 t/00-load.t
 t/cfg-for-parse.cfg
 t/cfg-for-parse.t
