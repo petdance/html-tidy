@@ -1,7 +1,10 @@
 Revision history for Perl extension HTML::Tidy.
 
-NEXT
-=======================
+1.54    Fri Sep 17 00:44:36 CDT 2010
+====================================
+Please note that the bug tracker for HTML::Tidy is now at
+http://github.com/petdance/html-tidy.
+
 [FIXES]
 Fixed incorrect calls to croak().  Thanks, Steve Grazzini.
 

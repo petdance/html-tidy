@@ -15,12 +15,12 @@ my $inc = "-I. -I/usr/include/tidyp -I/usr/local/include/tidyp -I$Config{usrinc}
 eval { require Alien::Tidyp; };
 
 if ( !$@ ) {
-    print "Gonna use tidyp via Alien::Tidyp\n";
+    print "Using tidyp via Alien::Tidyp\n";
     $libs = Alien::Tidyp->config('LIBS');
     $inc = Alien::Tidyp->config('INC');
 }
 else {
-    print "Alien::Tidyp not found, gonna look for tidyp on your system\n";
+    print "Alien::Tidyp not found. Looking for for tidyp on your system.\n";
     my @vars = ExtUtils::Liblist->ext( '-L/usr/lib -L/usr/local/lib -ltidyp', 0, 1 );
     $libs = $vars[2];
 
@@ -56,7 +56,7 @@ NOTE: It seems that you don't have LWP::Simple installed.
 EOF
 }
 
-WriteMakefile(
+my $parms = {
     NAME                => 'HTML::Tidy',
     AUTHOR              => 'Andy Lester <andy@petdance.com>',
     VERSION_FROM        => 'lib/HTML/Tidy.pm',
@@ -77,8 +77,24 @@ WriteMakefile(
     EXE_FILES           => [qw(bin/webtidy)],
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean               => { FILES => 'HTML-Tidy-*' },
-);
+};
 
+if ( $ExtUtils::MakeMaker::VERSION ge '6.45_01' ) {
+    $parms->{META_MERGE} = {
+        resources => {
+            license     => 'http://www.opensource.org/licenses/artistic-license-2.0.php',
+            homepage    => 'http://github.com/petdance/html-tidy',
+            bugtracker  => 'http://github.com/petdance/html-tidy/issues',
+            Repository  => 'http://github.com/petdance/html-tidy',
+        }
+    };
+    $parms->{LICENSE} = 'artistic_2',
+}
+if ( $ExtUtils::MakeMaker::VERSION ge '6.47_02' ) {
+    $parms->{MIN_PERL_VERSION} = 5.008;
+}
+
+WriteMakefile( %{$parms} );
 
 sub MY::postamble {
 return <<'MAKE_FRAG';
