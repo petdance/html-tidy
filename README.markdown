@@ -6,10 +6,9 @@ a replacement for HTML::Lint.
 
 INSTALLING TIDYP
 ================
-You need the tidyp library to build HTML::Tidy.  If you haven't installed
-it, you can get a source distribution:
-
-    http://github.com/petdance/tidyp/downloads
+You need the tidyp library to build HTML::Tidy.  If you
+haven't installed it, you can get a source distribution at
+http://github.com/petdance/tidyp/downloads
 
 
 INSTALLATION
@@ -17,10 +16,10 @@ INSTALLATION
 Once you have libtidyp installed, install HTML::Tidy like any standard
 Perl module.
 
-   perl Makefile.PL
-   make
-   make test
-   make install
+    perl Makefile.PL
+    make
+    make test
+    make install
 
 
 COPYRIGHT AND LICENSE
