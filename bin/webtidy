@@ -12,7 +12,7 @@ my $context;
 my $tidy = new HTML::Tidy;
 
 GetOptions(
-    'help'          => \$help,
+    'help|version'  => \$help,
     'context:i'     => \$context,
     'noerrors'      => sub { $tidy->ignore( type => [ TIDY_ERROR ] ) },
     'nowarnings'    => sub { $tidy->ignore( type => [ TIDY_WARNING ] ) },
@@ -77,3 +77,6 @@ Usage: webtidy [filename or url]... (filename - reads STDIN)
     --nowarnings    Ignore warnings
 
     --help          This message
+
+webtidy is free software.  You may modify or distribute it under the
+terms of the Artistic License v2.0.
