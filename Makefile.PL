@@ -31,15 +31,13 @@ else {
 It seems that you don't have tidyp installed.  HTML::Tidy does no
 real work on its own.  It's just a wrapper aound tidyp.
 
-HTML::Tidy is only tested to work with tidyp hosted at
-http://github.com/petdance/tidyp.  This is mostly the same as the one
-at http://tidy.sourceforge.net/, with some changes, such as adding a
-version number so that we can tell what version we're working with.
+Please read the README.markdown file for details on how to install.
 
-If you do have tidyp installed, and I just haven't detected it,
+If you do have tidyp installed, but Makefile.PL can't detect it,
 go ahead and try building.  If HTML::Tidy builds and tests correctly,
-then please let Andy Lester know at andy@petdance.com so that he can
-fix the library detection code.
+please file a ticket at Github at
+http://github.com/petdance/html-tidy/issues.  so we can fix the
+library detection code.
 
 EOF
     }
