@@ -46,6 +46,6 @@ Copyright (C) 2004-2010 by Andy Lester
 This library is free software.  It may be redistributed and modified
 under the Artistic License v2.0.
 
-* [1]: http://search.cpan.org/dist/HTML-Lint/       "HTML::Lint"
-* [2]: http://github.com/petdance/tidyp/downloads   "tidyp source distributions"
-* [3]: http://search.cpan.org/dist/Alien-Tidyp/     "Alien::Tidyp"
+  [1]: http://search.cpan.org/dist/HTML-Lint/       "HTML::Lint"
+  [2]: http://github.com/petdance/tidyp/downloads   "tidyp source distributions"
+  [3]: http://search.cpan.org/dist/Alien-Tidyp/     "Alien::Tidyp"
