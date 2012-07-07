@@ -137,11 +137,11 @@ _tidy_clean(input, configfile, tidy_options)
         }
 
         if ( rc >= 0 ) {
-            rc = tidySetErrorBuffer( tdoc, &errbuf );  // Capture diagnostics
+            rc = tidySetErrorBuffer( tdoc, &errbuf );  /* Capture diagnostics */
         }
 
         if ( rc >= 0 ) {
-            rc = tidyParseString( tdoc, input );   // Parse the input
+            rc = tidyParseString( tdoc, input );   /* Parse the input */
         }
 
         if ( rc >= 0 ) {
