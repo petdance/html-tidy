@@ -6,6 +6,9 @@ NEXT
 webtidy's version statement now shows the version number of the underlying
 tidyp library.
 
+[FIXES]
+Fixed an undef warning in parse().  Thanks, Vladimir Timofeev.
+
 
 1.54    Fri Sep 17 00:44:36 CDT 2010
 ====================================
