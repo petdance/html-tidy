@@ -83,7 +83,7 @@ if ( $ExtUtils::MakeMaker::VERSION ge '6.45_01' ) {
             license     => 'http://www.opensource.org/licenses/artistic-license-2.0.php',
             homepage    => 'http://github.com/petdance/html-tidy',
             bugtracker  => 'http://github.com/petdance/html-tidy/issues',
-            Repository  => 'http://github.com/petdance/html-tidy',
+            repository  => 'http://github.com/petdance/html-tidy',
         }
     };
     $parms->{LICENSE} = 'artistic_2',
