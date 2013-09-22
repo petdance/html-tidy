@@ -9,6 +9,10 @@ tidyp library.
 [FIXES]
 Fixed an undef warning in parse().  Thanks, Vladimir Timofeev.
 
+utf8 was never encoded correctly.  Thanks, Vladimir Timofeev and Alistair
+Francis.
+
+
 
 1.54    Fri Sep 17 00:44:36 CDT 2010
 ====================================
