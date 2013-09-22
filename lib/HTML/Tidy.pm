@@ -353,7 +353,7 @@ Returns the version of the underling tidyp library.
 =cut
 
 # backcompat
-sub libtidyp_version { shift->tidyp_version }
+sub libtidyp_version { return shift->tidyp_version }
 
 sub tidyp_version {
     my $version_str = _tidyp_version();
