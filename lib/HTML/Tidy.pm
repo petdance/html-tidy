@@ -367,14 +367,14 @@ __END__
 
 =head1 INSTALLING TIDYP
 
-L<HTML::Tidy|HTML::Tidy> requires that C<tidyp> be installed on your system.
+C<HTML::Tidy> requires that C<tidyp> be installed on your system.
 You can obtain tidyp through your distribution's package manager
 (make sure you install the development package with headers), or from
 the tidyp Git repository at L<http://github.com/petdance/tidyp>.
 
 =head1 CONVERTING FROM C<HTML::Lint>
 
-L<HTML::Tidy|HTML::Tidy> is different from L<HTML::Lint|HTML::Lint> in a number of crucial ways.
+C<HTML::Tidy> is different from C<HTML::Lint> in a number of crucial ways.
 
 =over 4
 
