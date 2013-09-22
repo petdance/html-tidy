@@ -86,7 +86,7 @@ if ( $ExtUtils::MakeMaker::VERSION ge '6.45_01' ) {
             repository  => 'http://github.com/petdance/html-tidy',
         }
     };
-    $parms->{LICENSE} = 'artistic_2',
+    $parms->{LICENSE} = 'artistic_2';
 }
 if ( $ExtUtils::MakeMaker::VERSION ge '6.47_02' ) {
     $parms->{MIN_PERL_VERSION} = 5.008;
