@@ -228,7 +228,7 @@ sub parse {
                                                 $self->{config_file},
                                                 $self->{tidy_options}
                                               );
-    return unless defined $errorblock;
+    return 1 unless defined $errorblock;
 
     utf8::decode($errorblock);
 
