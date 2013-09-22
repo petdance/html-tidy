@@ -223,7 +223,7 @@ sub parse {
     }
     my $html = join( '', @_ );
 
-    utf8::encode($html) unless utf8::is_utf8($html);
+    utf8::encode($html) if utf8::is_utf8($html);
     my ($errorblock,$newline) = _tidy_messages( $html,
                                                 $self->{config_file},
                                                 $self->{tidy_options}
@@ -309,7 +309,7 @@ sub clean {
     }
     my $text = join( '', @_ );
 
-    utf8::encode($text) unless utf8::is_utf8($text);
+    utf8::encode($text) if utf8::is_utf8($text);
     if ( defined $text ) {
         $text .= "\n";
     }
