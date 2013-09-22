@@ -224,10 +224,7 @@ sub parse {
     my $html = join( '', @_ );
 
     utf8::encode($html) if utf8::is_utf8($html);
-    my ($errorblock,$newline) = _tidy_messages( $html,
-                                                $self->{config_file},
-                                                $self->{tidy_options}
-                                              );
+    my ($errorblock,$newline) = _tidy_messages( $html, $self->{config_file}, $self->{tidy_options} );
     return 1 unless defined $errorblock;
 
     utf8::decode($errorblock);
