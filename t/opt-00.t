@@ -7,7 +7,7 @@ use Test::More tests => 1;
 
 use HTML::Tidy;
 
-my $tidy = new HTML::Tidy({
+my $tidy = HTML::Tidy->new({
     tidy_mark           => 0,
     add_xml_decl        => 1,
     output_xhtml        => 1,

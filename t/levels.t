@@ -7,7 +7,7 @@ use Test::More tests => 2;
 
 use HTML::Tidy;
 
-my $tidy = new HTML::Tidy;
+my $tidy = HTML::Tidy->new;
 isa_ok( $tidy, 'HTML::Tidy' );
 $tidy->parse( '-', <DATA> );
 

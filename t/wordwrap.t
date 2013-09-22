@@ -29,7 +29,7 @@ EOD
 my @expected = split(/\n/, $expected);
 
 my $cfg = 't/wordwrap.cfg';
-my $tidy = new HTML::Tidy( {config_file => $cfg} );
+my $tidy = HTML::Tidy->new( {config_file => $cfg} );
 
 my $result = $tidy->clean( $input );
 my @result = split(/\n/, $result);

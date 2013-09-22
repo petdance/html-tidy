@@ -9,7 +9,7 @@ use HTML::Tidy;
 my $help;
 my $context;
 
-my $tidy = new HTML::Tidy;
+my $tidy = HTML::Tidy->new;
 
 GetOptions(
     'help|version'  => \$help,

@@ -16,7 +16,7 @@ my @expected = split /\n/, q{
 chomp @expected;
 shift @expected; # First one's blank
 
-my $tidy = new HTML::Tidy;
+my $tidy = HTML::Tidy->new;
 isa_ok( $tidy, 'HTML::Tidy' );
 $tidy->ignore( type => TIDY_INFO );
 $tidy->parse( '-', $html );

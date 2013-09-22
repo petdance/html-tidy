@@ -11,7 +11,7 @@ my $html = join '', <DATA>;
 
 # No errors at all.
 
-my $tidy = new HTML::Tidy;
+my $tidy = HTML::Tidy->new;
 isa_ok( $tidy, 'HTML::Tidy' );
 
 $tidy->ignore( type => TIDY_INFO );

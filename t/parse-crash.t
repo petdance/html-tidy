@@ -13,7 +13,7 @@ use HTML::Tidy;
 
 my $html = do { local $/; <DATA> };
 
-my $tidy = new HTML::Tidy;
+my $tidy = HTML::Tidy->new;
 isa_ok( $tidy, 'HTML::Tidy' );
 $tidy->ignore( type => TIDY_INFO );
 $tidy->clean( $html );

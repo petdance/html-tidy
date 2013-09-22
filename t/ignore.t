@@ -25,7 +25,7 @@ chomp @expected_errors;
 shift @expected_errors; # First one's blank
 
 WARNINGS_ONLY: {
-    my $tidy = new HTML::Tidy;
+    my $tidy = HTML::Tidy->new;
     isa_ok( $tidy, 'HTML::Tidy' );
 
     $tidy->ignore( type => TIDY_ERROR );
@@ -38,7 +38,7 @@ WARNINGS_ONLY: {
 }
 
 ERRORS_ONLY: {
-    my $tidy = new HTML::Tidy;
+    my $tidy = HTML::Tidy->new;
     isa_ok( $tidy, 'HTML::Tidy' );
 
     $tidy->ignore( type => TIDY_WARNING );
@@ -50,7 +50,7 @@ ERRORS_ONLY: {
 }
 
 DIES_ON_ERROR: {
-    my $tidy = new HTML::Tidy;
+    my $tidy = HTML::Tidy->new;
     isa_ok( $tidy, 'HTML::Tidy' );
 
     eval { $tidy->ignore( blongo => TIDY_WARNING ) };

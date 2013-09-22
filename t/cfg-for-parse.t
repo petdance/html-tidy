@@ -18,7 +18,7 @@ DATA (9:1) Error: <y> is not recognized!
 chomp @expected_messages;
 shift @expected_messages; # First one's blank
 
-my $tidy = new HTML::Tidy({config_file => 't/cfg-for-parse.cfg' });
+my $tidy = HTML::Tidy->new( { config_file => 't/cfg-for-parse.cfg' } );
 isa_ok( $tidy, 'HTML::Tidy' );
 
 $tidy->parse( 'DATA', $html );

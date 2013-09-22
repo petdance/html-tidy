@@ -18,7 +18,7 @@ chomp @expected_messages;
 shift @expected_messages; # First one's blank
 
 IGNORE_BOGOTAG: {
-    my $tidy = new HTML::Tidy;
+    my $tidy = HTML::Tidy->new;
     isa_ok( $tidy, 'HTML::Tidy' );
 
     $tidy->ignore( text => qr/bogotag/ );

@@ -13,7 +13,7 @@ my $raw = do { local $/ = undef; <$fh> };
 close $fh;
 
 my $cfg = 't/venus.cfg';
-my $tidy = new HTML::Tidy( {config_file => $cfg} );
+my $tidy = HTML::Tidy->new( {config_file => $cfg} );
 isa_ok( $tidy, 'HTML::Tidy' );
 
 my $cooked = $tidy->clean( $raw );
