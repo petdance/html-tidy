@@ -1,14 +1,11 @@
-#!perl -Tw
-# unicode_nbsp.t 
+#!perl -T
 
 use warnings;
 use strict;
 
-use Test::More tests => 3;
+use Test::More tests => 2;
 
-BEGIN {
-    use_ok( 'HTML::Tidy' );
-}
+use HTML::Tidy;
 
 use Encode;
 

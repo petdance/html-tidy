@@ -1,12 +1,11 @@
-#!perl -Tw
+#!perl -T
+
 use warnings;
 use strict;
-use Test::More;
 
-BEGIN {
-    plan tests => 2;
-    use_ok( 'HTML::Tidy' );
-}
+use Test::More tests => 1;
+
+use HTML::Tidy;
 
 my $input=q{Here's some <B>ed and <BR/>eakfest MarkUp};
 

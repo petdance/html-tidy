@@ -1,13 +1,11 @@
-#!perl -w
+#!perl -T
 
 use warnings;
 use strict;
 
-use Test::More tests => 4;
+use Test::More tests => 3;
 
-BEGIN {
-    use_ok( 'HTML::Tidy' );
-}
+use HTML::Tidy;
 
 my $html = join '', <DATA>;
 

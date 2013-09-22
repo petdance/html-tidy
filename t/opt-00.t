@@ -1,13 +1,11 @@
-#!perl -Tw
+#!perl -T
 
 use warnings;
 use strict;
-use Test::More;
 
-BEGIN {
-    plan tests => 2;
-    use_ok( 'HTML::Tidy' );
-}
+use Test::More tests => 1;
+
+use HTML::Tidy;
 
 my $tidy = new HTML::Tidy({
     tidy_mark           => 0,

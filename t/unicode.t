@@ -1,14 +1,12 @@
-#!perl -Tw
-# unicode.t 
+#!perl -T
 # Copyright (c) 2006 Jonathan Rockway <jrockway@cpan.org>
 
 use warnings;
 use strict;
-use Test::More tests => 7;
 
-BEGIN {
-    use_ok( 'HTML::Tidy' );
-}
+use Test::More tests => 6;
+
+use HTML::Tidy;
 
 my $args = { newline => 'Lf' };
 my $tidy = HTML::Tidy->new($args);

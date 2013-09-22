@@ -1,12 +1,11 @@
-#!perl -Tw
+#!perl -T
 
 use warnings;
 use strict;
-use Test::More tests => 4;
 
-BEGIN {
-    use_ok( 'HTML::Tidy' );
-}
+use Test::More tests => 3;
+
+use HTML::Tidy;
 
 my $args = { newline => 'Lf' };
 my $tidy = HTML::Tidy->new($args);

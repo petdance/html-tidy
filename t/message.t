@@ -1,12 +1,12 @@
-#!perl -Tw
+#!perl -T
 
 use warnings;
 use strict;
 
-use Test::More tests => 16;
+use Test::More tests => 14;
 
-BEGIN { use_ok( 'HTML::Tidy' ); }
-BEGIN { use_ok( 'HTML::Tidy::Message' ); }
+use HTML::Tidy;
+use HTML::Tidy::Message;
 
 WITH_LINE_NUMBERS: {
     my $error = HTML::Tidy::Message->new( 'foo.pl', TIDY_ERROR, 2112, 5150, 'Blah blah' );

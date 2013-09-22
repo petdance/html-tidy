@@ -1,12 +1,11 @@
-#!perl -Tw
+#!perl -T
 
 use warnings;
 use strict;
-use Test::More tests => 3;
 
-BEGIN {
-    use_ok( 'HTML::Tidy' );
-}
+use Test::More tests => 2;
+
+use HTML::Tidy;
 
 my $html = do { local $/; <DATA> };
 

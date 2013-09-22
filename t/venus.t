@@ -1,13 +1,11 @@
-#!perl -Tw
+#!perl -T
 
 use warnings;
 use strict;
-use Test::More;
 
-BEGIN {
-    plan tests => 3;
-    use_ok( 'HTML::Tidy' );
-}
+use Test::More tests => 2;
+
+use HTML::Tidy;
 
 my $filename = 't/venus.html';
 open( my $fh, '<', $filename ) or die "Can't open $filename: $!\n";

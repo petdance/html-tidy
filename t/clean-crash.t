@@ -1,4 +1,4 @@
-#!/usr/bin/perl -Tw
+#!/usr/bin/perl -T
 
 use warnings;
 use strict;
@@ -8,13 +8,9 @@ use strict;
 #<URL: https://rt.cpan.org/Ticket/Display.html?id=7254 >
 #Here's a snippet of code to repro the bug, it produces an 'Illegal instruction' error
 
-use Test::More tests=>3;
+use Test::More tests => 2;
 
-BEGIN {
-    use_ok( 'HTML::Tidy' );
-}
-
-use strict;
+use HTML::Tidy;
 
 my $html = do { local $/; <DATA> };
 

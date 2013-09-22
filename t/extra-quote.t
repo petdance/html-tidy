@@ -1,4 +1,4 @@
-#!perl -Tw
+#!perl -T
 
 use warnings;
 use strict;
@@ -6,9 +6,9 @@ use strict;
 # Response to an HTML::Lint request that it handle mishandled quotes.
 # See https://rt.cpan.org/Ticket/Display.html?id=1459
 
-use Test::More tests => 4;
+use Test::More tests => 3;
 
-BEGIN { use_ok( 'HTML::Tidy' ); }
+use HTML::Tidy;
 
 my $html = do { local $/ = undef; <DATA> };
 

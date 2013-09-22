@@ -1,4 +1,4 @@
-#!/usr/bin/perl -Tw
+#!/usr/bin/perl -T
 
 use warnings;
 use strict;
@@ -7,13 +7,9 @@ use strict;
 # I've been unable to get it to fail again, but we might as well make a
 # test out of it.
 
-use Test::More tests=>3;
+use Test::More tests => 2;
 
-BEGIN {
-    use_ok( 'HTML::Tidy' );
-}
-
-use strict;
+use HTML::Tidy;
 
 my $html = do { local $/; <DATA> };
 
