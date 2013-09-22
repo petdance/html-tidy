@@ -3,7 +3,7 @@
 use warnings;
 use strict;
 
-use Test::More tests => 14;
+use Test::More tests => 4;
 
 use HTML::Tidy;
 use HTML::Tidy::Message;
@@ -20,7 +20,7 @@ WITH_LINE_NUMBERS: {
         text        => 'Blah blah',
         as_string   => 'foo.pl (2112:5150) Error: Blah blah',
     );
-    _match_up( $error, %expected );
+    _match_up( $error, \%expected, 'With line numbers' );
 }
 
 WITHOUT_LINE_NUMBERS: {
@@ -35,15 +35,21 @@ WITHOUT_LINE_NUMBERS: {
         text        => 'Blah blah',
         as_string   => 'bar.pl - Warning: Blah blah',
     );
-    _match_up( $error, %expected );
+    _match_up( $error, \%expected, 'Without line numbers' );
 }
 
 sub _match_up {
-    my $error = shift;
-    my %expected = @_;
-
     local $Test::Builder::Level = $Test::Builder::Level + 1;
-    for my $what ( sort keys %expected ) {
-        is( $error->$what, $expected{$what}, "$what matches" );
-    }
+
+    my $error    = shift;
+    my $expected = shift;
+    my $msg      = shift or die;
+
+    return subtest "_matchup( $msg )" => sub {
+        plan tests => scalar keys %{$expected};
+
+        for my $what ( sort keys %{$expected} ) {
+            is( $error->$what, $expected->{$what}, "$what matches" );
+        }
+    };
 }

@@ -36,10 +36,11 @@ IGNORE_BOGOTAG: {
 sub munge_returned {
     # non-1 line numbers are not reliable across libtidies
     my $returned = shift;
-    my $start_line = shift || qq{-};
-    for ( my $i = 0; $i < scalar @{$returned}; $i++ ) {
-        next if $returned->[$i] =~ m/$start_line \(\d+:1\)/;
-        $returned->[$i] =~ s/$start_line \((\d+):(\d+)\)/$start_line ($1:XX)/;
+    my $start_line = shift || '-';
+
+    for my $line ( @{$returned} ) {
+        next if $line =~ m/$start_line \(\d+:1\)/;
+        $line =~ s/$start_line \((\d+):(\d+)\)/$start_line ($1:XX)/;
     }
 }
 __DATA__
