@@ -34,6 +34,8 @@ sub munge_returned {
         next if $returned->[$i] =~ m/$start_line \(\d+:1\)/;
         $returned->[$i] =~ s/$start_line \((\d+):(\d+)\)/$start_line ($1:XX)/;
     }
+
+    return;
 }
 
 __DATA__
