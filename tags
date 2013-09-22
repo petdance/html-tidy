@@ -9,19 +9,44 @@ ERRORS_ONLY	t/ignore.t	/^ERRORS_ONLY: {$/;"	l
 HTML::Tidy	lib/HTML/Tidy.pm	/^package HTML::Tidy;$/;"	p
 HTML::Tidy::Message	lib/HTML/Tidy/Message.pm	/^package HTML::Tidy::Message;$/;"	p
 IGNORE_BOGOTAG	t/ignore-text.t	/^IGNORE_BOGOTAG: {$/;"	l
+PERL_ARGS_ASSERT_CROAK_XS_USAGE	Tidy.c	144;"	d	file:
+PERL_ARGS_ASSERT_CROAK_XS_USAGE	Tidy.c	171;"	d	file:
+PERL_DECIMAL_VERSION	Tidy.c	63;"	d	file:
+PERL_UNUSED_VAR	Tidy.c	50;"	d	file:
+PERL_VERSION_DECIMAL	Tidy.c	60;"	d	file:
+PERL_VERSION_GE	Tidy.c	67;"	d	file:
+PERL_VERSION_LE	Tidy.c	71;"	d	file:
+S_croak_xs_usage	Tidy.c	/^S_croak_xs_usage(pTHX_ const CV *const cv, const char *const params)$/;"	f
 TIDY_ERROR	lib/HTML/Tidy.pm	/^use constant TIDY_ERROR   => 3;$/;"	c
 TIDY_INFO	lib/HTML/Tidy.pm	/^use constant TIDY_INFO    => 1;$/;"	c
 TIDY_WARNING	lib/HTML/Tidy.pm	/^use constant TIDY_WARNING => 2;$/;"	c
 WARNINGS_ONLY	t/ignore.t	/^WARNINGS_ONLY: {$/;"	l
 WITHOUT_LINE_NUMBERS	t/message.t	/^WITHOUT_LINE_NUMBERS: {$/;"	l
 WITH_LINE_NUMBERS	t/message.t	/^WITH_LINE_NUMBERS: {$/;"	l
-XS	Tidy.c	/^XS(XS_HTML__Tidy__tidy_clean)$/;"	f
-XS	Tidy.c	/^XS(XS_HTML__Tidy__tidy_messages)$/;"	f
-XS	Tidy.c	/^XS(XS_HTML__Tidy__tidyp_version)$/;"	f
-XS	Tidy.c	/^XS(boot_HTML__Tidy)$/;"	f
-XS_HTML__Tidy__tidy_clean	Tidy.c	/^XS(XS_HTML__Tidy__tidy_clean); \/* prototype to pass -Wmissing-prototypes *\/$/;"	v
-XS_HTML__Tidy__tidy_messages	Tidy.c	/^XS(XS_HTML__Tidy__tidy_messages); \/* prototype to pass -Wmissing-prototypes *\/$/;"	v
-XS_HTML__Tidy__tidyp_version	Tidy.c	/^XS(XS_HTML__Tidy__tidyp_version); \/* prototype to pass -Wmissing-prototypes *\/$/;"	v
+XS_EUPXS	Tidy.c	/^XS_EUPXS(XS_HTML__Tidy__tidy_clean)$/;"	f
+XS_EUPXS	Tidy.c	/^XS_EUPXS(XS_HTML__Tidy__tidy_messages)$/;"	f
+XS_EUPXS	Tidy.c	/^XS_EUPXS(XS_HTML__Tidy__tidyp_version)$/;"	f
+XS_EUPXS	Tidy.c	135;"	d	file:
+XS_EUPXS	Tidy.c	137;"	d	file:
+XS_EUPXS	Tidy.c	140;"	d	file:
+XS_EXTERNAL	Tidy.c	/^XS_EXTERNAL(boot_HTML__Tidy)$/;"	f
+XS_EXTERNAL	Tidy.c	100;"	d	file:
+XS_EXTERNAL	Tidy.c	104;"	d	file:
+XS_EXTERNAL	Tidy.c	107;"	d	file:
+XS_EXTERNAL	Tidy.c	123;"	d	file:
+XS_EXTERNAL	Tidy.c	88;"	d	file:
+XS_EXTERNAL	Tidy.c	91;"	d	file:
+XS_EXTERNAL	Tidy.c	95;"	d	file:
+XS_HTML__Tidy__tidy_clean	Tidy.c	/^XS_EUPXS(XS_HTML__Tidy__tidy_clean); \/* prototype to pass -Wmissing-prototypes *\/$/;"	v
+XS_HTML__Tidy__tidy_messages	Tidy.c	/^XS_EUPXS(XS_HTML__Tidy__tidy_messages); \/* prototype to pass -Wmissing-prototypes *\/$/;"	v
+XS_HTML__Tidy__tidyp_version	Tidy.c	/^XS_EUPXS(XS_HTML__Tidy__tidyp_version); \/* prototype to pass -Wmissing-prototypes *\/$/;"	v
+XS_INTERNAL	Tidy.c	101;"	d	file:
+XS_INTERNAL	Tidy.c	105;"	d	file:
+XS_INTERNAL	Tidy.c	108;"	d	file:
+XS_INTERNAL	Tidy.c	126;"	d	file:
+XS_INTERNAL	Tidy.c	89;"	d	file:
+XS_INTERNAL	Tidy.c	92;"	d	file:
+XS_INTERNAL	Tidy.c	96;"	d	file:
 _is_keeper	lib/HTML/Tidy.pm	/^sub _is_keeper {$/;"	s
 _load_config_hash	Tidy.c	/^_load_config_hash(TidyDoc tdoc, HV *tidy_options)$/;"	f	file:
 _match_up	t/message.t	/^sub _match_up {$/;"	s
@@ -30,9 +55,12 @@ as_string	lib/HTML/Tidy/Message.pm	/^sub as_string {$/;"	s
 clean	lib/HTML/Tidy.pm	/^sub clean {$/;"	s
 clear_messages	lib/HTML/Tidy.pm	/^sub clear_messages {$/;"	s
 column	lib/HTML/Tidy/Message.pm	/^sub column  { my $self = shift; return $self->{_column} }$/;"	s
+croak_xs_usage	Tidy.c	174;"	d	file:
+croak_xs_usage	Tidy.c	176;"	d	file:
+dVAR	Tidy.c	54;"	d	file:
 file	lib/HTML/Tidy/Message.pm	/^sub file    { my $self = shift; return $self->{_file} }$/;"	s
 ignore	lib/HTML/Tidy.pm	/^sub ignore {$/;"	s
-libtidyp_version	lib/HTML/Tidy.pm	/^sub libtidyp_version {$/;"	s
+libtidyp_version	lib/HTML/Tidy.pm	/^sub libtidyp_version { return shift->tidyp_version }$/;"	s
 line	lib/HTML/Tidy/Message.pm	/^sub line    { my $self = shift; return $self->{_line} }$/;"	s
 messages	lib/HTML/Tidy.pm	/^sub messages {$/;"	s
 munge_returned	t/ignore-text.t	/^sub munge_returned {$/;"	s
@@ -40,7 +68,10 @@ munge_returned	t/ignore.t	/^sub munge_returned {$/;"	s
 munge_returned	t/levels.t	/^sub munge_returned {$/;"	s
 new	lib/HTML/Tidy.pm	/^sub new {$/;"	s
 new	lib/HTML/Tidy/Message.pm	/^sub new {$/;"	s
+newXSproto_portable	Tidy.c	185;"	d	file:
+newXSproto_portable	Tidy.c	187;"	d	file:
 parse	lib/HTML/Tidy.pm	/^sub parse {$/;"	s
 text	lib/HTML/Tidy/Message.pm	/^sub text    { my $self = shift; return $self->{_text} }$/;"	s
+tidyp_version	lib/HTML/Tidy.pm	/^sub tidyp_version {$/;"	s
 type	lib/HTML/Tidy/Message.pm	/^sub type    { my $self = shift; return $self->{_type} }$/;"	s
 where	lib/HTML/Tidy/Message.pm	/^sub where {$/;"	s
