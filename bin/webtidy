@@ -28,8 +28,7 @@ if ( !@ARGV || $help ) {
 for my $url ( @ARGV ) {
     my @lines;
     if ( $url =~ /^https?:/ ) {
-        eval { require LWP::Simple };
-        if ( $@ ) {
+        if ( !eval { require LWP::Simple; 1; } ) {
             warn q{Can't retrieve URLs without LWP::Simple installed};
             next;
         }
