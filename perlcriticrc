@@ -7,10 +7,14 @@ allow_leading_tabs = 0
 [-Documentation::RequirePodAtEnd]
 [-Documentation::RequirePodSections]
 
+[InputOutput::RequireCheckedSyscalls]
+functions = open opendir read readline readdir
+
 [-Miscellanea::RequireRcsKeywords]
 
 [-Modules::RequireVersionVar]
 
+[-RegularExpressions::RequireDotMatchAnything]
 [-RegularExpressions::RequireExtendedFormatting]
 [-RegularExpressions::RequireLineBoundaryMatching]
 
