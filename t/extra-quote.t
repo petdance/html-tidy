@@ -6,7 +6,7 @@ use strict;
 # Response to an HTML::Lint request that it handle mishandled quotes.
 # See https://rt.cpan.org/Ticket/Display.html?id=1459
 
-use Test::More tests => 3;
+use Test::More tests => 4;
 
 use HTML::Tidy;
 
@@ -16,7 +16,8 @@ my $tidy = HTML::Tidy->new;
 isa_ok( $tidy, 'HTML::Tidy' );
 
 $tidy->ignore( text => qr/DOCTYPE/ );
-$tidy->parse( '-', $html );
+my $rc = $tidy->parse( '-', $html );
+ok( $rc, 'Parsed OK' );
 
 my @expected = split /\n/, q{
 - (4:1) Warning: <img> unexpected or duplicate quote mark

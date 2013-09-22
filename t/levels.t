@@ -3,13 +3,14 @@
 use warnings;
 use strict;
 
-use Test::More tests => 2;
+use Test::More tests => 3;
 
 use HTML::Tidy;
 
 my $tidy = HTML::Tidy->new;
 isa_ok( $tidy, 'HTML::Tidy' );
-$tidy->parse( '-', <DATA> );
+my $rc = $tidy->parse( '-', <DATA> );
+ok( $rc, 'Parsed OK' );
 
 my @expected = split /\n/, q{
 - (1:1) Warning: missing <!DOCTYPE> declaration

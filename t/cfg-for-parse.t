@@ -3,7 +3,7 @@
 use warnings;
 use strict;
 
-use Test::More tests => 2;
+use Test::More tests => 3;
 
 use HTML::Tidy;
 
@@ -21,7 +21,8 @@ shift @expected_messages; # First one's blank
 my $tidy = HTML::Tidy->new( { config_file => 't/cfg-for-parse.cfg' } );
 isa_ok( $tidy, 'HTML::Tidy' );
 
-$tidy->parse( 'DATA', $html );
+my $rc = $tidy->parse( 'DATA', $html );
+ok( $rc, 'Parsed OK' );
 
 my @returned = map { $_->as_string } $tidy->messages;
 s/[\r\n]+\z// for @returned;

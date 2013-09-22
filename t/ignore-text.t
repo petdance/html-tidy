@@ -3,7 +3,7 @@
 use warnings;
 use strict;
 
-use Test::More tests => 2;
+use Test::More tests => 3;
 
 use HTML::Tidy;
 
@@ -24,7 +24,8 @@ IGNORE_BOGOTAG: {
     $tidy->ignore( text => qr/bogotag/ );
     $tidy->ignore( text => [ qr/UNESCAPED/, qr/doctype/i ] );
     # The qr/UNESCAPED/ should not ignore anything because there's no /i
-    $tidy->parse( 'DATA', $html );
+    my $rc = $tidy->parse( 'DATA', $html );
+    ok( $rc, 'Parsed OK' );
 
     my @returned = map { $_->as_string } $tidy->messages;
     munge_returned( \@returned, 'DATA' );

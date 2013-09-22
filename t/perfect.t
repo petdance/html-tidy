@@ -3,7 +3,7 @@
 use warnings;
 use strict;
 
-use Test::More tests => 2;
+use Test::More tests => 3;
 
 use HTML::Tidy;
 
@@ -15,7 +15,8 @@ my $tidy = HTML::Tidy->new;
 isa_ok( $tidy, 'HTML::Tidy' );
 
 $tidy->ignore( type => TIDY_INFO );
-$tidy->parse( '-', $html );
+my $rc = $tidy->parse( '-', $html );
+ok( $rc, 'Parsed OK' );
 
 my @returned = map { $_->as_string } $tidy->messages;
 is( scalar @returned, 0, 'Should have no messages' );

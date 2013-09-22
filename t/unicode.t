@@ -4,7 +4,7 @@
 use warnings;
 use strict;
 
-use Test::More tests => 9;
+use Test::More tests => 11;
 
 use HTML::Tidy;
 use Encode ();
@@ -38,7 +38,9 @@ my @messages = $tidy->messages;
 is_deeply( \@messages, [], q{There still shouldn't be any errors} );
 
 $tidy = HTML::Tidy->new($args);
-$tidy->parse( '', $html );
+isa_ok( $tidy, 'HTML::Tidy' );
+my $rc = $tidy->parse( '', $html );
+ok( $rc, 'Parsed OK' );
 @messages = $tidy->messages;
 is_deeply( \@messages, [], q{There still shouldn't be any errors} );
 

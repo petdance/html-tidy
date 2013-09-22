@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 6;
+use Test::More tests => 8;
 
 use HTML::Tidy;
 
@@ -29,7 +29,8 @@ WARNINGS_ONLY: {
     isa_ok( $tidy, 'HTML::Tidy' );
 
     $tidy->ignore( type => TIDY_ERROR );
-    $tidy->parse( '-', $html );
+    my $rc = $tidy->parse( '-', $html );
+    ok( $rc, 'Parsed OK' );
 
     my @returned = map { $_->as_string } $tidy->messages;
     s/[\r\n]+\z// for @returned;
@@ -42,7 +43,8 @@ ERRORS_ONLY: {
     isa_ok( $tidy, 'HTML::Tidy' );
 
     $tidy->ignore( type => TIDY_WARNING );
-    $tidy->parse( '-', $html );
+    my $rc = $tidy->parse( '-', $html );
+    ok( $rc, 'Parsed OK' );
 
     my @returned = map { $_->as_string } $tidy->messages;
     s/[\r\n]+\z// for @returned;
