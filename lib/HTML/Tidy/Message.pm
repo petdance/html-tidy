@@ -137,12 +137,12 @@ sub column  { my $self = shift; return $self->{_column} }
 sub text    { my $self = shift; return $self->{_text} }
 
 
-=head1 LICENSE
+=head1 COPYRIGHT & LICENSE
 
-This code may be distributed under the same terms as Perl itself.
+Copyright 2005-2013 Andy Lester.
 
-Please note that these modules are not products of or supported by the
-employers of the various contributors to the code.
+This program is free software; you can redistribute it and/or modify
+it under the terms of the Artistic License v2.0.
 
 =head1 AUTHOR
 
