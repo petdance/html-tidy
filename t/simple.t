@@ -20,7 +20,7 @@ my @messages = $tidy->messages;
 is( scalar @messages, 5, 'Right number of initial messages' );
 
 $tidy->clear_messages;
-is( scalar $tidy->messages, 0, 'Cleared the messages' );
+is_deeply( [$tidy->messages], [], 'Cleared the messages' );
 
 __DATA__
 <html>

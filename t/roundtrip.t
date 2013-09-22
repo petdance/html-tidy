@@ -23,8 +23,7 @@ $tidy->ignore( type => TIDY_INFO );
 $clean = $tidy->clean($clean);
 my @messages = $tidy->messages( $clean );
 
-is( scalar @messages, 0, q{The cleaned stuff shouldn't have any errors} );
-diag( 'But they do...', Dumper(\@messages) ) if @messages;
+is_deeply( \@messages, [], q{The cleaned stuff shouldn't have any errors} );
 
 $clean =~ s/"(HTML Tidy|tidyp).+w3\.org"/"Tidy"/;
 

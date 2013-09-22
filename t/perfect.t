@@ -19,7 +19,7 @@ my $rc = $tidy->parse( '-', $html );
 ok( $rc, 'Parsed OK' );
 
 my @returned = map { $_->as_string } $tidy->messages;
-is( scalar @returned, 0, 'Should have no messages' );
+is_deeply( \@returned, [], 'Should have no messages' );
 # User reported a segfault when there are no messages.  By gum, he was
 # right.
 
