@@ -26,6 +26,7 @@ t/simple.t
 t/too-many-titles.t
 t/unicode.html
 t/unicode.t
+t/unicode-nbsp.t
 t/venus.cfg
 t/venus.html
 t/venus.t
