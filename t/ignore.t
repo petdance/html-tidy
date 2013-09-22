@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 8;
+use Test::More tests => 9;
 
 use HTML::Tidy;
 
@@ -55,14 +55,15 @@ DIES_ON_ERROR: {
     my $tidy = HTML::Tidy->new;
     isa_ok( $tidy, 'HTML::Tidy' );
 
-    eval { $tidy->ignore( blongo => TIDY_WARNING ) };
+    my $rc = eval { $tidy->ignore( blongo => TIDY_WARNING ) };
+    ok( !$rc, 'eval should fail' );
     like( $@, qr/^Invalid ignore type.+blongo/, 'Throws an error' );
 }
 
 sub munge_returned {
     # non-1 line numbers are not reliable across libtidies
     my $returned = shift;
-    my $start_line = shift || qq{-};
+    my $start_line = shift || '-';
     for ( my $i = 0; $i < scalar @{$returned}; $i++ ) {
         next if $returned->[$i] =~ m/$start_line \(\d+:1\)/;
         $returned->[$i] =~ s/$start_line \((\d+):(\d+)\)/$start_line ($1:XX)/;
