@@ -1,6 +1,6 @@
 Revision history for Perl extension HTML::Tidy.
 
-NEXT
+1.56    Sun Sep 22 16:39:40 CDT 2013
 ====================================
 [ENHANCEMENTS]
 webtidy's version statement now shows the version number of the underlying
@@ -11,6 +11,9 @@ Fixed an undef warning in parse().  Thanks, Vladimir Timofeev.
 
 utf8 was never encoded correctly.  Thanks, Vladimir Timofeev and Alistair
 Francis.
+
+The ->parse() method would sometimes return false even though everything
+worked fine.  Thanks, @sebaer.
 
 
 
