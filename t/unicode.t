@@ -4,7 +4,7 @@
 use warnings;
 use strict;
 
-use Test::More tests => 11;
+use Test::More tests => 9;
 
 use HTML::Tidy;
 use Encode ();
@@ -44,14 +44,15 @@ ok( $rc, 'Parsed OK' );
 @messages = $tidy->messages;
 is_deeply( \@messages, [], q{There still shouldn't be any errors} );
 
-# Try send bytes to clean method.
-my $html2 = Encode::encode('utf8',$html);
-ok(!utf8::is_utf8($html2), 'html2 is row bytes');
-my $clean2 = $tidy->clean( $html2 );
-ok(utf8::is_utf8($clean2), 'but cleaned output is string');
-$clean2 =~ s/"HTML Tidy.+w3\.org"/"Tidy"/;
-$clean2 =~ s/"(HTML Tidy|tidyp).+w3\.org"/"Tidy"/;
-is($clean2, $reference, q{Cleanup didn't break anything});
+subtest 'Try send bytes to clean method.' => sub {
+    my $html = Encode::encode('utf8',$html);
+    ok(!utf8::is_utf8($html), 'html is row bytes');
+    my $clean = $tidy->clean( $html );
+    ok(utf8::is_utf8($clean), 'but cleaned output is string');
+    $clean =~ s/"HTML Tidy.+w3\.org"/"Tidy"/;
+    $clean =~ s/"(HTML Tidy|tidyp).+w3\.org"/"Tidy"/;
+    is($clean, $reference, q{Cleanup didn't break anything});
+};
 
 __DATA__
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
