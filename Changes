@@ -1,10 +1,14 @@
 Revision history for Perl extension HTML::Tidy.
 
-NEXT
+1.58    Sat May 27 00:03:51 CDT 2017
 ====================================
+No functionality changes.  This just fixes some tests.  This will probably
+be the last release that uses the old tidy/tidyp.  There is a new tidy
+that supports HTML 5 and I'm going to start working on making HTML::Tidy
+use that.
+
 [FIXES]
 Failing tests on Windows.  Thanks, Klaus Baldermann. (GH #11, GH #23)
-
 
 [INTERNALS]
 Added more tests.  Thanks, Hunter McMillen.
