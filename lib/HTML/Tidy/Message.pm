@@ -139,7 +139,7 @@ sub text    { my $self = shift; return $self->{_text} }
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2005-20137Andy Lester.
+Copyright 2005-2017 Andy Lester.
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the Artistic License v2.0.
