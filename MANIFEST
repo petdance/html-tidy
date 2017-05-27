@@ -10,13 +10,17 @@ README.markdown
 t/00-load.t
 t/cfg-for-parse.cfg
 t/cfg-for-parse.t
+t/clean.t
 t/clean-crash.t
 t/extra-quote.t
 t/ignore-text.t
 t/ignore.t
+t/illegal-options.t
 t/levels.t
 t/message.t
 t/opt-00.t
+t/parse.t
+t/parse-errors.t
 t/perfect.t
 t/pod-coverage.t
 t/pod.t

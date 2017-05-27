@@ -1,5 +1,11 @@
 Revision history for Perl extension HTML::Tidy.
 
+NEXT
+====================================
+[INTERNALS]
+Added more tests.  Thanks, Hunter McMillen.
+
+
 1.56    Sun Sep 22 16:39:40 CDT 2013
 ====================================
 [ENHANCEMENTS]

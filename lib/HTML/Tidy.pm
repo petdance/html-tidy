@@ -219,7 +219,7 @@ sub parse {
     my $self = shift;
     my $filename = shift;
     if (@_ == 0) {
-        Carp::croak('Usage: parser($filename,$str [, $str...])') ## no critic
+        Carp::croak('Usage: parse($filename,$str [, $str...])') ## no critic
     }
     my $html = join( '', @_ );
 
