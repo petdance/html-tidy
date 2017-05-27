@@ -447,7 +447,7 @@ Andy Lester, C<< <andy at petdance.com> >>
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright (C) 2005-2013 by Andy Lester
+Copyright (C) 2005-2017 by Andy Lester
 
 This library is free software.  You mean modify or distribute it under
 the Artistic License v2.0.

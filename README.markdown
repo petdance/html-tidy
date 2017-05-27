@@ -22,8 +22,10 @@ github.
 tidyp installation process.
 
 * Your operating system may also have a package for tidyp that you
-can install.  I am not aware of any packages at this writing, but
-they could still exist without me knowing.
+can install.  As of this writing, these operating systems are known
+to provide tidyp library:
+    * Fedora contains [tidyp-devel package] [4]
+    * FreeBSD contains [tidyp port] [5]
 
 You need only do one of these steps.
 
@@ -41,7 +43,7 @@ install HTML::Tidy like any standard Perl module.
 
 COPYRIGHT AND LICENSE
 =====================
-Copyright (C) 2004-2010 by Andy Lester
+Copyright (C) 2004-2017 by Andy Lester
 
 This library is free software.  It may be redistributed and modified
 under the Artistic License v2.0.
@@ -49,3 +51,5 @@ under the Artistic License v2.0.
   [1]: http://search.cpan.org/dist/HTML-Lint/       "HTML::Lint"
   [2]: http://github.com/petdance/tidyp/downloads   "tidyp source distributions"
   [3]: http://search.cpan.org/dist/Alien-Tidyp/     "Alien::Tidyp"
+  [4]: https://apps.fedoraproject.org/packages/tidyp "tidyp-devel package"
+  [5]: http://fbsdmon.org/ports/textproc/tidyp       "tidyp port"
