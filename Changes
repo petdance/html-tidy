@@ -2,6 +2,10 @@ Revision history for Perl extension HTML::Tidy.
 
 NEXT
 ====================================
+[FIXES]
+Failing tests on Windows.  Thanks, Klaus Baldermann. (GH #11, GH #23)
+
+
 [INTERNALS]
 Added more tests.  Thanks, Hunter McMillen.
 
