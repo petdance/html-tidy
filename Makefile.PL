@@ -29,7 +29,7 @@ else {
         print <<'EOF';
 
 It seems that you don't have tidyp installed.  HTML::Tidy does no
-real work on its own.  It's just a wrapper aound tidyp.
+real work on its own.  It's just a wrapper around tidyp.
 
 Please read the README.markdown file for details on how to install.
 
