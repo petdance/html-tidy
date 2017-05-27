@@ -31,12 +31,12 @@ else {
 It seems that you don't have tidyp installed.  HTML::Tidy does no
 real work on its own.  It's just a wrapper around tidyp.
 
-Please read the README.markdown file for details on how to install.
+Please read the README.markdown file for details on how to install tidyp.
 
 If you do have tidyp installed, but Makefile.PL can't detect it,
 go ahead and try building.  If HTML::Tidy builds and tests correctly,
 please file a ticket at Github at
-http://github.com/petdance/html-tidy/issues.  so we can fix the
+http://github.com/petdance/html-tidy/issues, so we can fix the
 library detection code.
 
 EOF
