@@ -17,22 +17,21 @@ throws_ok {
 } qr/\Q$expected_pattern\E/,
 'clean() croaks when not given a string or list of strings';
 
-is(
+like(
     $tidy->clean(''),
     _expected_empty_html(),
     '$tidy->clean("") returns empty HTML document',
 );
 
 sub _expected_empty_html {
-    return <<'ENDHTML';
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+    return qr{<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <html>
 <head>
-<meta name="generator" content="tidyp for Linux (v1.02), see www.w3.org">
+<meta name="generator" content="[^"]+">
 <title></title>
 </head>
 <body>
 </body>
 </html>
-ENDHTML
+};
 }
