@@ -13,11 +13,11 @@ HTML::Tidy - (X)HTML validation in a Perl object
 
 =head1 VERSION
 
-Version 1.58
+Version 1.60
 
 =cut
 
-our $VERSION = '1.58';
+our $VERSION = '1.60';
 
 =head1 SYNOPSIS
 
@@ -439,7 +439,10 @@ L<http://github.com/petdance/html-tidy>
 
 =head1 ACKNOWLEDGEMENTS
 
-Thanks to Jonathan Rockway and Robert Bachmann for contributions.
+Thanks to
+Rufus Cable,
+Jonathan Rockway,
+and Robert Bachmann for contributions.
 
 =head1 AUTHOR
 

@@ -1,5 +1,12 @@
 Revision history for Perl extension HTML::Tidy.
 
+
+1.60    Wed Sep 13 10:34:35 CDT 2017
+====================================
+No functionality changes.  Fixes failing tests caused by differing
+versions of the tidy library.  Thanks, Rufus Cable.
+
+
 1.58    Sat May 27 00:03:51 CDT 2017
 ====================================
 No functionality changes.  This just fixes some tests.  This will probably
