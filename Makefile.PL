@@ -60,14 +60,15 @@ my $parms = {
     VERSION_FROM        => 'lib/HTML/Tidy.pm',
     ABSTRACT_FROM       => 'lib/HTML/Tidy.pm',
     PREREQ_PM           => {
-        'Encode'        => 0,   # for tests
-        'Exporter'      => 0,
-        'Getopt::Long'  => 0,   # in webtidy
-        'Test::More'    => '0.98', # For subtest()
-        'Test::Builder' => 0,
-        'Carp'          => 0,
-        'overload'      => 0,
-        'constant'      => 0,
+        'Encode'          => 0,   # for tests
+        'Exporter'        => 0,
+        'Getopt::Long'    => 0,   # in webtidy
+        'Test::More'      => '0.98', # For subtest()
+        'Test::Builder'   => 0,
+        'Test::Exception' => 0,
+        'Carp'            => 0,
+        'overload'        => 0,
+        'constant'        => 0,
     },
 
     LIBS                => [$libs],
