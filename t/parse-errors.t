@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use Test::Exception;
-use Test::More tests => 2;
+use Test::More tests => 4;
 
 use HTML::Tidy;
 
@@ -15,9 +15,19 @@ my $errbuf = do {
     readline(*DATA);
 };
 
-my $ret = $tidy->_parse_errors('fake_filename.html', $errbuf, "\n");
-is( $ret, 1, 'encountered 1 parsing error' );
-is( scalar @{$tidy->{messages}},  7, 'got 7 messages when parsing errors' );
+CATCH_A_WARNING: {
+    my $stashed_warning;
+    my $ncalls = 0;
+    local $SIG{__WARN__} = sub { $stashed_warning = shift; ++$ncalls; };
+
+    my $ret = $tidy->_parse_errors('fake_filename.html', $errbuf, "\n");
+    is( $ret, 1, 'encountered 1 parsing error' );
+    is( scalar @{$tidy->{messages}},  7, 'got 7 messages when parsing errors' );
+
+    # Check our warnings.
+    is( $ncalls, 1, 'Warning should have been called exactly once' );
+    like( $stashed_warning, qr/HTML::Tidy: Unknown error type: FAKE_ERROR_TYPE at/, 'Expected warning' );
+}
 
 __DATA__
 line 1 column 1 - Warning: missing <!DOCTYPE> declaration
