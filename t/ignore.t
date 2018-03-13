@@ -12,8 +12,9 @@ my $html = do { local $/ = undef; <DATA> };
 my @expected_warnings = split /\n/, q{
 - (1:1) Warning: missing <!DOCTYPE> declaration
 - (23:1) Warning: discarding unexpected <bogotag>
-- (24:XX) Warning: unescaped & which should be written as &amp;
-- (24:XX) Warning: unescaped & which should be written as &amp;
+- (24:XX) Info: value for attribute "height" missing quote marks
+- (24:XX) Info: value for attribute "width" missing quote marks
+- (24:XX) Info: value for attribute "align" missing quote marks
 };
 chomp @expected_warnings;
 shift @expected_warnings; # First one's blank
@@ -43,6 +44,7 @@ ERRORS_ONLY: {
     isa_ok( $tidy, 'HTML::Tidy' );
 
     $tidy->ignore( type => TIDY_WARNING );
+    $tidy->ignore( type => TIDY_INFO );
     my $rc = $tidy->parse( '-', $html );
     ok( $rc, 'Parsed OK' );
 

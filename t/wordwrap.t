@@ -11,7 +11,7 @@ my $input=q{Here's some <B>ed and <BR/>eakfest MarkUp};
 
 my $expected=<<'EOD';
 <!DOCTYPE 
-html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+html>
 <html>
 <head>
 <title>
@@ -35,3 +35,4 @@ my $result = $tidy->clean( $input );
 my @result = split(/\n/, $result);
 is_deeply( \@result, \@expected, 'Cleaned stuff looks like what we expected');
 
+exit 0;

@@ -16,8 +16,9 @@ my @expected = split /\n/, q{
 - (1:1) Warning: missing <!DOCTYPE> declaration
 - (23:1) Error: <bogotag> is not recognized!
 - (23:1) Warning: discarding unexpected <bogotag>
-- (24:XX) Warning: unescaped & which should be written as &amp;
-- (24:XX) Warning: unescaped & which should be written as &amp;
+- (24:XX) Info: value for attribute "height" missing quote marks
+- (24:XX) Info: value for attribute "width" missing quote marks
+- (24:XX) Info: value for attribute "align" missing quote marks
 };
 chomp @expected;
 shift @expected; # First one's blank

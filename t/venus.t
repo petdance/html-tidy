@@ -1,5 +1,6 @@
 #!perl -T
 
+use 5.10.1;
 use warnings;
 use strict;
 
@@ -72,18 +73,24 @@ __DATA__
       <a href="../../General/Credits.html">Credits</a> | 
       <a href="../../General/Feedback.html">Feedback</a> |</h4>
     </center>
-    <center>
-      <p>
-        <img src="../../WetlandGraphics/GoldbarThread.gif" width="648" height="4" align="bottom" />
-      </p>
-    </center>
-    <div align="center"></div>
-    <center>
-      <address>Created for the Museums in the Classroom program sponsored by Illinois State Board of Education, the Brookfield Zoo, the Illinois State Museum., and Kildeer Countryside CCSD 96.</address>
-      <address> </address>
-      <address>Authors: Twin Groves Museums in the Classroom Team,</address>
-      <address>School: Twin Groves Junior High School, Buffalo Grove, Illinois 60089</address>
-    </center>
-    <center>Created: 27 June 1998- Updated: 6 October 2003</center>
+    <address>
+      <center>
+        <p>
+          <img src="../../WetlandGraphics/GoldbarThread.gif" width="648" height="4" align="bottom" />
+        </p>
+      </center>
+      <div align="center"></div>
+      <address>
+        <center>
+          <address>Created for the Museums in the Classroom program sponsored by Illinois State Board of Education, the Brookfield Zoo, the Illinois State Museum., and Kildeer Countryside CCSD 96.</address>
+          <address> </address>
+          <address>Authors: Twin Groves Museums in the Classroom Team,</address>
+          <address>School: Twin Groves Junior High School, Buffalo Grove, Illinois 60089</address>
+        </center>
+      </address>
+      <address>
+        <center>Created: 27 June 1998- Updated: 6 October 2003</center>
+      </address>
+    </address>
   </body>
 </html>

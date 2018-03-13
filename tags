@@ -4,6 +4,7 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+CATCH_A_WARNING	t/parse-errors.t	/^CATCH_A_WARNING: {$/;"	l
 DIES_ON_ERROR	t/ignore.t	/^DIES_ON_ERROR: {$/;"	l
 ERRORS_ONLY	t/ignore.t	/^ERRORS_ONLY: {$/;"	l
 HTML::Tidy	lib/HTML/Tidy.pm	/^package HTML::Tidy;$/;"	p
@@ -24,8 +25,8 @@ WARNINGS_ONLY	t/ignore.t	/^WARNINGS_ONLY: {$/;"	l
 WITHOUT_LINE_NUMBERS	t/message.t	/^WITHOUT_LINE_NUMBERS: {$/;"	l
 WITH_LINE_NUMBERS	t/message.t	/^WITH_LINE_NUMBERS: {$/;"	l
 XS_EUPXS	Tidy.c	/^XS_EUPXS(XS_HTML__Tidy__tidy_clean)$/;"	f
+XS_EUPXS	Tidy.c	/^XS_EUPXS(XS_HTML__Tidy__tidy_library_version)$/;"	f
 XS_EUPXS	Tidy.c	/^XS_EUPXS(XS_HTML__Tidy__tidy_messages)$/;"	f
-XS_EUPXS	Tidy.c	/^XS_EUPXS(XS_HTML__Tidy__tidyp_version)$/;"	f
 XS_EUPXS	Tidy.c	135;"	d	file:
 XS_EUPXS	Tidy.c	137;"	d	file:
 XS_EUPXS	Tidy.c	140;"	d	file:
@@ -38,8 +39,8 @@ XS_EXTERNAL	Tidy.c	88;"	d	file:
 XS_EXTERNAL	Tidy.c	91;"	d	file:
 XS_EXTERNAL	Tidy.c	95;"	d	file:
 XS_HTML__Tidy__tidy_clean	Tidy.c	/^XS_EUPXS(XS_HTML__Tidy__tidy_clean); \/* prototype to pass -Wmissing-prototypes *\/$/;"	v
+XS_HTML__Tidy__tidy_library_version	Tidy.c	/^XS_EUPXS(XS_HTML__Tidy__tidy_library_version); \/* prototype to pass -Wmissing-prototypes *\/$/;"	v
 XS_HTML__Tidy__tidy_messages	Tidy.c	/^XS_EUPXS(XS_HTML__Tidy__tidy_messages); \/* prototype to pass -Wmissing-prototypes *\/$/;"	v
-XS_HTML__Tidy__tidyp_version	Tidy.c	/^XS_EUPXS(XS_HTML__Tidy__tidyp_version); \/* prototype to pass -Wmissing-prototypes *\/$/;"	v
 XS_INTERNAL	Tidy.c	101;"	d	file:
 XS_INTERNAL	Tidy.c	105;"	d	file:
 XS_INTERNAL	Tidy.c	108;"	d	file:
@@ -47,6 +48,7 @@ XS_INTERNAL	Tidy.c	126;"	d	file:
 XS_INTERNAL	Tidy.c	89;"	d	file:
 XS_INTERNAL	Tidy.c	92;"	d	file:
 XS_INTERNAL	Tidy.c	96;"	d	file:
+_expected_empty_html	t/clean.t	/^sub _expected_empty_html {$/;"	s
 _is_keeper	lib/HTML/Tidy.pm	/^sub _is_keeper {$/;"	s
 _load_config_hash	Tidy.c	/^_load_config_hash(TidyDoc tdoc, HV *tidy_options)$/;"	f	file:
 _match_up	t/message.t	/^sub _match_up {$/;"	s
@@ -60,7 +62,6 @@ croak_xs_usage	Tidy.c	176;"	d	file:
 dVAR	Tidy.c	54;"	d	file:
 file	lib/HTML/Tidy/Message.pm	/^sub file    { my $self = shift; return $self->{_file} }$/;"	s
 ignore	lib/HTML/Tidy.pm	/^sub ignore {$/;"	s
-libtidyp_version	lib/HTML/Tidy.pm	/^sub libtidyp_version { return shift->tidyp_version }$/;"	s
 line	lib/HTML/Tidy/Message.pm	/^sub line    { my $self = shift; return $self->{_line} }$/;"	s
 messages	lib/HTML/Tidy.pm	/^sub messages {$/;"	s
 munge_returned	t/ignore-text.t	/^sub munge_returned {$/;"	s
@@ -72,6 +73,6 @@ newXSproto_portable	Tidy.c	185;"	d	file:
 newXSproto_portable	Tidy.c	187;"	d	file:
 parse	lib/HTML/Tidy.pm	/^sub parse {$/;"	s
 text	lib/HTML/Tidy/Message.pm	/^sub text    { my $self = shift; return $self->{_text} }$/;"	s
-tidyp_version	lib/HTML/Tidy.pm	/^sub tidyp_version {$/;"	s
+tidy_library_version	lib/HTML/Tidy.pm	/^sub tidy_library_version {$/;"	s
 type	lib/HTML/Tidy/Message.pm	/^sub type    { my $self = shift; return $self->{_type} }$/;"	s
 where	lib/HTML/Tidy/Message.pm	/^sub where {$/;"	s

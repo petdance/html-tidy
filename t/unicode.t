@@ -1,5 +1,4 @@
 #!perl -T
-# Copyright (c) 2006 Jonathan Rockway <jrockway@cpan.org>
 
 use warnings;
 use strict;
@@ -10,7 +9,7 @@ use HTML::Tidy;
 use Encode ();
 use Carp;
 
-my $args = { newline => 'Lf' };
+my $args = { newline => 'LF', wrap => 0 };
 my $tidy = HTML::Tidy->new($args);
 $tidy->ignore( type => TIDY_INFO );
 
@@ -31,7 +30,7 @@ my $clean = $tidy->clean( $html );
 ok(utf8::is_utf8($clean), 'cleaned output is also unicode');
 
 $clean =~ s/"HTML Tidy.+w3\.org"/"Tidy"/;
-$clean =~ s/"(HTML Tidy|tidyp).+w3\.org"/"Tidy"/;
+$clean =~ s/"(HTML Tidy|tidy).+w3\.org"/"Tidy"/;
 is($clean, $reference, q{Cleanup didn't break anything});
 
 my @messages = $tidy->messages;
@@ -45,20 +44,23 @@ ok( $rc, 'Parsed OK' );
 is_deeply( \@messages, [], q{There still shouldn't be any errors} );
 
 subtest 'Try send bytes to clean method.' => sub {
+    plan tests => 3;
     my $html = Encode::encode('utf8',$html);
     ok(!utf8::is_utf8($html), 'html is row bytes');
     my $clean = $tidy->clean( $html );
     ok(utf8::is_utf8($clean), 'but cleaned output is string');
     $clean =~ s/"HTML Tidy.+w3\.org"/"Tidy"/;
-    $clean =~ s/"(HTML Tidy|tidyp).+w3\.org"/"Tidy"/;
+    $clean =~ s/"(HTML Tidy|tidy).+w3\.org"/"Tidy"/;
     is($clean, $reference, q{Cleanup didn't break anything});
 };
+
+exit 0;
 
 __DATA__
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <html>
 <head>
-<meta name="generator" content="Tidy">
+<meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.6.0">
 <title>日本語のホムページ</title>
 </head>
 <body>

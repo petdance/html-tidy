@@ -1,6 +1,18 @@
 Revision history for Perl extension HTML::Tidy.
 
 
+5.00_01 Tue Mar 13 11:54:52 CDT 2018
+====================================
+Uses latest tidy-html5.  No longer needs tidyp.  Requires Perl 5.10.1.
+
+[ENHANCEMENTS]
+The tidy-html5 library validates HTML5.
+
+
+============================================================
+
+LAST VERSION using original HTML-Tidy / tidyp libraries.
+
 1.60    Wed Sep 13 10:34:35 CDT 2017
 ====================================
 No functionality changes.  Fixes failing tests caused by differing

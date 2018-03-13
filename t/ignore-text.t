@@ -10,8 +10,9 @@ use HTML::Tidy;
 my $html = do { local $/; <DATA> };
 
 my @expected_messages = split /\n/, q{
-DATA (24:XX) Warning: unescaped & which should be written as &amp;
-DATA (24:XX) Warning: unescaped & which should be written as &amp;
+DATA (24:XX) Info: value for attribute "height" missing quote marks
+DATA (24:XX) Info: value for attribute "width" missing quote marks
+DATA (24:XX) Info: value for attribute "align" missing quote marks
 };
 
 chomp @expected_messages;

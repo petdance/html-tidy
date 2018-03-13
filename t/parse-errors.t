@@ -39,5 +39,4 @@ line 1 column 1 - Warning: inserting missing \'title\' element
 Info: Document content looks like HTML 3.2
 
 FAKE_ERROR_TYPE
-5 warnings, 0 errors were found!
-
+Tidy found 5 warnings and 0 errors!

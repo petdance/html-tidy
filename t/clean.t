@@ -8,7 +8,7 @@ use Test::More tests => 3;
 
 use HTML::Tidy;
 
-my $tidy = HTML::Tidy->new;
+my $tidy = HTML::Tidy->new( { wrap => 0 } );
 isa_ok( $tidy, 'HTML::Tidy' );
 
 my $expected_pattern = 'Usage: clean($str [, $str...])';
@@ -24,10 +24,10 @@ like(
 );
 
 sub _expected_empty_html {
-    return qr{<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+    return qr{<!DOCTYPE html>
 <html>
 <head>
-<meta name="generator" content="[^"]+">
+<meta name="generator" content="HTML Tidy for HTML5 for Linux version \d+\.\d+\.\d+">
 <title></title>
 </head>
 <body>

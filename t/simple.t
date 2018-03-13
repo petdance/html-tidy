@@ -17,7 +17,7 @@ my $rc = $tidy->parse( '-', $html );
 ok( $rc, 'Parsed OK' );
 
 my @messages = $tidy->messages;
-is( scalar @messages, 5, 'Right number of initial messages' );
+is( scalar @messages, 6, 'Right number of initial messages' );
 
 $tidy->clear_messages;
 is_deeply( [$tidy->messages], [], 'Cleared the messages' );
