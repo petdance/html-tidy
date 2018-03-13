@@ -8,6 +8,9 @@ Uses latest tidy-html5.  No longer needs tidyp.  Requires Perl 5.10.1.
 [ENHANCEMENTS]
 The tidy-html5 library validates HTML5.
 
+[INCOMPATIBILITIES]
+Removed the overloading of HTML::Tidy::Message objects.  Now you have to explicitly call ->as_string.
+
 
 ============================================================
 

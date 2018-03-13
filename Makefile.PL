@@ -36,7 +36,6 @@ my $parms = {
         'Test::Builder'   => 0,
         'Test::Exception' => 0,
         'Carp'            => 0,
-        'overload'        => 0,
         'constant'        => 0,
     },
 
