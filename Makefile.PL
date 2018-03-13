@@ -2,7 +2,7 @@
 
 package main;
 
-use 5.10.1;
+use 5.010001;
 use strict;
 use warnings;
 use ExtUtils::MakeMaker 6.48;

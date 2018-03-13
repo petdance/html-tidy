@@ -1,8 +1,8 @@
 #!perl -T
 
+use 5.010001;
 use strict;
 use warnings;
-use 5.10.1;
 
 use Test::More tests => 1;
 

@@ -1,6 +1,6 @@
 package HTML::Tidy;
 
-use 5.10.1;
+use 5.010001;
 use strict;
 use warnings;
 use Carp ();

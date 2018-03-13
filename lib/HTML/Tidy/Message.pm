@@ -1,5 +1,6 @@
 package HTML::Tidy::Message;
 
+use 5.010001;
 use warnings;
 use strict;
 
