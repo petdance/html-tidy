@@ -59,7 +59,7 @@ my $parms = {
 
 WriteMakefile( %{$parms} );
 
-sub MY::postamble {
+sub MY::postamble { ## no critic ( Subroutines::ProhibitQualifiedSubDeclarations )
 return <<'MAKE_FRAG';
 .PHONY: tags critic
 
