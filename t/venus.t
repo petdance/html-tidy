@@ -11,7 +11,7 @@ use HTML::Tidy;
 my $filename = 't/venus.html';
 open( my $fh, '<', $filename ) or die "Can't open $filename: $!\n";
 my $raw = do { local $/ = undef; <$fh> };
-close $fh;
+close $fh or die $!;
 
 my $cfg = 't/venus.cfg';
 my $tidy = HTML::Tidy->new( {config_file => $cfg} );

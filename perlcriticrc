@@ -1,3 +1,7 @@
+verbose = %f:%l:%c %m (%p)\n    %r\n\n
+
+[-BuiltinFunctions::ProhibitBooleanGrep]
+
 [-CodeLayout::ProhibitParensWithBuiltins]
 [CodeLayout::ProhibitHardTabs]
 allow_leading_tabs = 0
@@ -13,11 +17,19 @@ above_version = 5.008008
 [-Documentation::RequirePodAtEnd]
 [-Documentation::RequirePodSections]
 
+[-Editor::RequireEmacsFileVariables]
+
+# We're a utility.  We're OK with die.
+[-ErrorHandling::RequireCarping]
+[-ErrorHandling::RequireUseOfExceptions]
+
 [-InputOutput::RequireCheckedSyscalls]
 functions = open opendir read readline readdir close closedir
 
 [-Miscellanea::RequireRcsKeywords]
 
+[-Modules::ProhibitAutomaticExportation]
+[-Modules::RequireExplicitInclusion]
 [-Modules::RequireVersionVar]
 
 [-RegularExpressions::ProhibitEscapedMetacharacters]
@@ -26,14 +38,16 @@ functions = open opendir read readline readdir close closedir
 [-RegularExpressions::RequireLineBoundaryMatching]
 
 [-Subroutines::ProhibitCallsToUndeclaredSubs]
+[-Subroutines::ProhibitCallsToUnexportedSubs]
 # Too many subs coming in from Test::More
 
 [Subroutines::RequireArgUnpacking]
 
 [-ValuesAndExpressions::ProhibitConstantPragma]
-[-ValuesAndExpressions::ProhibitNoisyQuotes]
 [-ValuesAndExpressions::ProhibitEmptyQuotes]
 [-ValuesAndExpressions::ProhibitMagicNumbers]
+[-ValuesAndExpressions::ProhibitNoisyQuotes]
+[-ValuesAndExpressions::RequireConstantOnLeftSideOfEquality]
 
 [-Variables::ProhibitPunctuationVars]
 
