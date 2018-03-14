@@ -45,7 +45,7 @@ for my $url ( @ARGV ) {
     } else {
         open( my $fh, '<', $url ) or die "Can't open $url: $!";
         @lines = <$fh>;
-        close $fh;
+        close $fh or die $!;
     }
 
     $tidy->parse( $url, @lines );

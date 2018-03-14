@@ -12,9 +12,7 @@ use Config;
 my $libs = '-ltidy';
 my $inc = "-I. -I/usr/include/tidy -I/usr/local/include/tidy -I$Config{usrinc}/tidy";
 
-eval { require LWP::Simple; };
-
-if ( $@ ) {
+if ( not eval { require LWP::Simple; 1; } ) {
     print <<'EOF';
 
 NOTE: It seems that you don't have LWP::Simple installed.
@@ -47,7 +45,7 @@ my $parms = {
             homepage    => 'http://github.com/petdance/html-tidy',
             bugtracker  => 'http://github.com/petdance/html-tidy/issues',
             repository  => 'http://github.com/petdance/html-tidy',
-        }
+        },
     },
 
     LIBS                => [$libs],

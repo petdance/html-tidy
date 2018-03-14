@@ -29,8 +29,6 @@ above_version = 5.008008
 [-InputOutput::RequireCheckedSyscalls]
 functions = open opendir read readline readdir close closedir
 
-[-Miscellanea::RequireRcsKeywords]
-
 [-Modules::ProhibitAutomaticExportation]
 [-Modules::RequireExplicitInclusion]
 [-Modules::RequireVersionVar]
