@@ -20,8 +20,21 @@ isa_ok( $tidy, 'HTML::Tidy' );
 $tidy->ignore( type => TIDY_INFO );
 $tidy->clean( $html );
 
+my @expected = split( /\n/, <<'HERE' );
+ (1:1) Warning: missing <!DOCTYPE> declaration
+ (1:1) Warning: inserting implicit <body>
+ (1:1) Warning: missing </form> before <td>
+ (2:1) Warning: inserting implicit <table>
+ (2:1) Warning: missing <tr>
+ (3:1) Error: discarding unexpected </form>
+ (2:1) Warning: missing </table>
+ (1:1) Warning: missing </form>
+ (1:1) Warning: inserting missing 'title' element
+HERE
 my @mess = map { $_ ? $_->as_string() : undef } $tidy->messages();
-pass( 'Ended OK' );
+is_deeply( \@mess, \@expected, 'Messages match' );
+
+exit 0;
 
 __DATA__
 <form action="http://www.alternation.net/cobra/index.pl">
