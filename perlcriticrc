@@ -35,6 +35,7 @@ functions = open opendir read readline readdir close closedir
 [-Modules::RequireExplicitInclusion]
 [-Modules::RequireVersionVar]
 
+[-RegularExpressions::ProhibitComplexRegexes]
 [-RegularExpressions::ProhibitEscapedMetacharacters]
 [-RegularExpressions::RequireDotMatchAnything]
 [-RegularExpressions::RequireExtendedFormatting]

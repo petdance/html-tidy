@@ -246,7 +246,7 @@ sub _parse_errors {
         chomp $line;
 
         my $message;
-        if ( $line =~ /^line (\d+) column (\d+) - (Warning|Error|Info): (.+)$/ ) {
+        if ( $line =~ /^line (\d+) column (\d+) - (Warning|Error|Info): (.+)$/ ) {  ## no critic ( ControlStructures::ProhibitCascadingIfElse )
             my ($line, $col, $type, $text) = ($1, $2, $3, $4);
             $type =
                 ($type eq 'Warning') ? TIDY_WARNING :
