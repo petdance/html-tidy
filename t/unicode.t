@@ -15,12 +15,12 @@ my $tidy = HTML::Tidy->new($args);
 $tidy->ignore( type => TIDY_INFO );
 
 # Suck in the reference HTML document.
-open( my $html_in, '<:utf8', 't/unicode.html' ) or Carp::croak( "Can't read unicode.html: $!" );
+open( my $html_in, '<:encoding(UTF-8)', 't/unicode.html' ) or Carp::croak( "Can't read unicode.html: $!" );
 my $html = join( '', <$html_in> );
 close $html_in or die $!;
 
 # Suck in the correct, cleaned doc (from DATA)
-binmode DATA, ':utf8';
+binmode DATA, ':encoding(UTF-8)';
 my $reference = join( '', <DATA> );
 
 # Make sure both are unicode characters (not utf-x octets).

@@ -5,6 +5,8 @@ verbose = %f:%l:%c %m (%p)\n    %r\n\n
 [-CodeLayout::ProhibitParensWithBuiltins]
 [CodeLayout::ProhibitHardTabs]
 allow_leading_tabs = 0
+[-CodeLayout::RequireASCII]
+# t/unicode.t uses UTF8.
 [-CodeLayout::RequireTidyCode]
 # Never works for me.
 
@@ -48,6 +50,7 @@ functions = open opendir read readline readdir close closedir
 [-ValuesAndExpressions::ProhibitMagicNumbers]
 [-ValuesAndExpressions::ProhibitNoisyQuotes]
 [-ValuesAndExpressions::RequireConstantOnLeftSideOfEquality]
+[-ValuesAndExpressions::RequireInterpolationOfMetachars]
 
+[-Variables::ProhibitPackageVars]
 [-Variables::ProhibitPunctuationVars]
-
