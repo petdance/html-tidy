@@ -219,7 +219,7 @@ sub parse {
     my $self = shift;
     my $filename = shift;
     if (@_ == 0) {
-        Carp::croak('Usage: parse($filename,$str [, $str...])') ## no critic
+        Carp::croak('Usage: parse($filename,$str [, $str...])');
     }
     my $html = join( '', @_ );
 
@@ -300,8 +300,9 @@ Returns the cleaned string as a single string.
 
 sub clean {
     my $self = shift;
+
     if (@_ == 0) {
-        Carp::croak('Usage: clean($str [, $str...])') ## no critic
+        Carp::croak('Usage: clean($str [, $str...])');
     }
     my $text = join( '', @_ );
 

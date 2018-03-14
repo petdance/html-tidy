@@ -16,12 +16,12 @@ $tidy->ignore( type => TIDY_INFO );
 
 # Suck in the reference HTML document.
 open( my $html_in, '<:utf8', 't/unicode.html' ) or Carp::croak( "Can't read unicode.html: $!" );
-my $html = do { local $/; <$html_in> };
-close $html_in;
+my $html = join( '', <$html_in> );
+close $html_in or die $!;
 
 # Suck in the correct, cleaned doc (from DATA)
 binmode DATA, ':utf8';
-my $reference = do {local $/; <DATA>};
+my $reference = join( '', <DATA> );
 
 # Make sure both are unicode characters (not utf-x octets).
 ok(utf8::is_utf8($html), 'html is utf8');

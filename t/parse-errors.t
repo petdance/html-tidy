@@ -11,10 +11,7 @@ use HTML::Tidy;
 
 my $tidy = HTML::Tidy->new;
 
-my $errbuf = do {
-    local $/;
-    readline(*DATA);
-};
+my $errbuf = join( '', <DATA> );
 
 CATCH_A_WARNING: {
     my $stashed_warning;

@@ -23,6 +23,7 @@ above_version = 5.008008
 [-ErrorHandling::RequireCarping]
 [-ErrorHandling::RequireUseOfExceptions]
 
+[-InputOutput::ProhibitJoinedReadline]
 [-InputOutput::RequireCheckedSyscalls]
 functions = open opendir read readline readdir close closedir
 
@@ -40,8 +41,7 @@ functions = open opendir read readline readdir close closedir
 [-Subroutines::ProhibitCallsToUndeclaredSubs]
 [-Subroutines::ProhibitCallsToUnexportedSubs]
 # Too many subs coming in from Test::More
-
-[Subroutines::RequireArgUnpacking]
+[-Subroutines::RequireArgUnpacking]
 
 [-ValuesAndExpressions::ProhibitConstantPragma]
 [-ValuesAndExpressions::ProhibitEmptyQuotes]
