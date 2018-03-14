@@ -8,7 +8,7 @@ use Test::More tests => 3;
 
 use HTML::Tidy;
 
-my $html = do { local $/; <DATA> };
+my $html = do { local $/ = undef; <DATA> };
 
 my @expected_messages = split /\n/, <<'HERE';
 DATA (7:1) Error: <x> is not recognized!

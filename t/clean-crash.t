@@ -13,7 +13,7 @@ use Test::More tests => 2;
 
 use HTML::Tidy;
 
-my $html = do { local $/; <DATA> };
+my $html = do { local $/ = undef; <DATA> };
 
 my $tidy = HTML::Tidy->new;
 isa_ok( $tidy, 'HTML::Tidy' );

@@ -8,7 +8,7 @@ use Test::More tests => 3;
 
 use HTML::Tidy;
 
-my $html = do { local $/; <DATA> };
+my $html = do { local $/ = undef; <DATA> };
 
 my @expected_messages = split /\n/, <<'HERE';
 DATA (24:XX) Info: value for attribute "height" missing quote marks
