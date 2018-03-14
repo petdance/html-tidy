@@ -55,9 +55,9 @@ subtest 'Try send bytes to clean method.' => sub {
     my $tidy = HTML::Tidy->new( $tidy_constructor_args );
     $tidy->ignore( type => TIDY_INFO );
 
-    my $html = Encode::encode('utf8',$html);
-    ok(!utf8::is_utf8($html), 'html is row bytes');
-    my $clean = $tidy->clean( $html );
+    my $encoded_html = Encode::encode('utf8',$html);
+    ok(!utf8::is_utf8($encoded_html), 'html is row bytes');
+    my $clean = $tidy->clean( $encoded_html );
     ok(utf8::is_utf8($clean), 'but cleaned output is string');
     $clean =~ s/"HTML Tidy.+w3\.org"/"Tidy"/;
     $clean =~ s/"(HTML Tidy|tidy).+w3\.org"/"Tidy"/;
