@@ -22,9 +22,10 @@ my @unsupported_options = qw(
 foreach my $option ( @unsupported_options ) {
     throws_ok {
         HTML::Tidy->new(
-            {  config_file => 't/cfg-for-parse.cfg',
-               $option     => 1,
-            }
+            {
+                config_file => 't/cfg-for-parse.cfg',
+                $option     => 1,
+            },
         );
     } qr/\QUnsupported option: $option\E/,
     "option $option is not supported";

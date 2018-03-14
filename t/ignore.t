@@ -72,6 +72,8 @@ sub munge_returned {
         next if $line =~ /$start_line \(\d+:1\)/;
         $line =~ s/$start_line \((\d+):(\d+)\)/$start_line ($1:XX)/;
     }
+
+    return;
 }
 __DATA__
 <HTML>
