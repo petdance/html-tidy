@@ -25,6 +25,9 @@ functions = open opendir read readline readdir close closedir
 [-RegularExpressions::RequireExtendedFormatting]
 [-RegularExpressions::RequireLineBoundaryMatching]
 
+[-Subroutines::ProhibitCallsToUndeclaredSubs]
+# Too many subs coming in from Test::More
+
 [Subroutines::RequireArgUnpacking]
 
 [-ValuesAndExpressions::ProhibitConstantPragma]
@@ -33,3 +36,4 @@ functions = open opendir read readline readdir close closedir
 [-ValuesAndExpressions::ProhibitMagicNumbers]
 
 [-Variables::ProhibitPunctuationVars]
+
