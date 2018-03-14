@@ -1,8 +1,10 @@
 package HTML::Tidy::Message;
 
-use 5.010001;
 use warnings;
 use strict;
+use overload
+    q{""} => \&as_string,
+    fallback => 'sounds like a good idea';
 
 =head1 NAME
 

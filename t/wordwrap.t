@@ -1,6 +1,5 @@
 #!perl -T
 
-use 5.010001;
 use warnings;
 use strict;
 
@@ -12,7 +11,7 @@ my $input=q{Here's some <B>ed and <BR/>eakfest MarkUp};
 
 my $expected=<<'EOD';
 <!DOCTYPE 
-html>
+html PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <html>
 <head>
 <title>
@@ -36,4 +35,3 @@ my $result = $tidy->clean( $input );
 my @result = split(/\n/, $result);
 is_deeply( \@result, \@expected, 'Cleaned stuff looks like what we expected');
 
-exit 0;

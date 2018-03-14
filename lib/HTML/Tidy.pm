@@ -1,6 +1,6 @@
 package HTML::Tidy;
 
-use 5.010001;
+use 5.008;
 use strict;
 use warnings;
 use Carp ();
@@ -9,15 +9,15 @@ use HTML::Tidy::Message;
 
 =head1 NAME
 
-HTML::Tidy - HTML validation in a Perl object
+HTML::Tidy - (X)HTML validation in a Perl object
 
 =head1 VERSION
 
-Version 5.00_01
+Version 1.60
 
 =cut
 
-our $VERSION = '5.00_01';
+our $VERSION = '1.60';
 
 =head1 SYNOPSIS
 
@@ -67,14 +67,14 @@ Optionally you can give a hashref of configuration parms.
 
 This configuration file will be read and used when you clean or parse an HTML file.
 
-You can also pass options directly to tidy.
+You can also pass options directly to tidyp.
 
     my $tidy = HTML::Tidy->new( {
                                     output_xhtml => 1,
                                     tidy_mark => 0,
                                 } );
 
-See C<tidy -help-config> for the list of options supported by tidy.
+See C<tidyp -help-config> for the list of options supported by tidyp.
 
 The following options are not supported by C<HTML::Tidy>:
 
@@ -219,7 +219,7 @@ sub parse {
     my $self = shift;
     my $filename = shift;
     if (@_ == 0) {
-        Carp::croak('Usage: parse($filename,$str [, $str...])');
+        Carp::croak('Usage: parse($filename,$str [, $str...])') ## no critic
     }
     my $html = join( '', @_ );
 
@@ -246,7 +246,7 @@ sub _parse_errors {
         chomp $line;
 
         my $message;
-        if ( $line =~ /^line (\d+) column (\d+) - (Warning|Error|Info): (.+)$/ ) {  ## no critic ( ControlStructures::ProhibitCascadingIfElse )
+        if ( $line =~ /^line (\d+) column (\d+) - (Warning|Error|Info): (.+)$/ ) {
             my ($line, $col, $type, $text) = ($1, $2, $3, $4);
             $type =
                 ($type eq 'Warning') ? TIDY_WARNING :
@@ -261,9 +261,9 @@ sub _parse_errors {
             my $text = $1;
             $message = HTML::Tidy::Message->new( $filename, TIDY_INFO, undef, undef, $text );
         }
-        elsif ( $line =~ /^Tidy found \d+ warnings? and \d+ errors?!/ ) {
+        elsif ( $line =~ /^\d+ warnings?, \d+ errors? were found!/ ) {
             # Summary line we don't want
-            # We should take these counts from the summary and make sure they match what we parsed.
+
         }
         elsif ( $line eq 'No warnings or errors were found.' ) {
             # Summary line we don't want
@@ -279,6 +279,7 @@ sub _parse_errors {
         }
         elsif ( $line =~ m/^\s*$/  ) {
             # Blank line we don't want
+
         }
         else {
             Carp::carp "HTML::Tidy: Unknown error type: $line";
@@ -300,9 +301,8 @@ Returns the cleaned string as a single string.
 
 sub clean {
     my $self = shift;
-
     if (@_ == 0) {
-        Carp::croak('Usage: clean($str [, $str...])');
+        Carp::croak('Usage: clean($str [, $str...])') ## no critic
     }
     my $text = join( '', @_ );
 
@@ -330,25 +330,30 @@ sub _is_keeper {
 
     my @ignore_types = @{$self->{ignore_type}};
     if ( @ignore_types ) {
-        return 0 if grep { $message->type == $_ } @ignore_types;
+        return if grep { $message->type == $_ } @ignore_types;
     }
 
     my @ignore_texts = @{$self->{ignore_text}};
     if ( @ignore_texts ) {
-        return 0 if grep { $message->text =~ $_ } @ignore_texts;
+        return if grep { $message->text =~ $_ } @ignore_texts;
     }
 
     return 1;
 }
 
-=head2 tidy_library_version()
+=head2 tidyp_version()
 
-Returns the version of the underling tidy library.
+=head2 libtidyp_version()
+
+Returns the version of the underling tidyp library.
 
 =cut
 
-sub tidy_library_version {
-    my $version_str = _tidy_library_version();
+# backcompat
+sub libtidyp_version { return shift->tidyp_version }
+
+sub tidyp_version {
+    my $version_str = _tidyp_version();
 
     return $version_str;
 }
@@ -360,12 +365,12 @@ XSLoader::load('HTML::Tidy', $VERSION);
 
 __END__
 
-=head1 INSTALLING TIDY
+=head1 INSTALLING TIDYP
 
-C<HTML::Tidy> requires that the C<html-tidy> be installed on your system.
-You can probably obtain html-tidy through your distribution's package
-manager (make sure you install the development package with headers).  You
-can also check the html-tidy home page is L<http://www.html-tidy.org/>.
+C<HTML::Tidy> requires that C<tidyp> be installed on your system.
+You can obtain tidyp through your distribution's package manager
+(make sure you install the development package with headers), or from
+the tidyp Git repository at L<http://github.com/petdance/tidyp>.
 
 =head1 CONVERTING FROM C<HTML::Lint>
 
@@ -375,11 +380,11 @@ C<HTML::Tidy> is different from C<HTML::Lint> in a number of crucial ways.
 
 =item * It's not pure Perl
 
-C<HTML::Tidy> is mostly a happy wrapper around the html-tidy library.
+C<HTML::Tidy> is mostly a happy wrapper around tidyp.
 
 =item * The real work is done by someone else
 
-Changes to tidy may come down the pipe that I don't have control over.
+Changes to tidyp may come down the pipe that I don't have control over.
 That's the price we pay for having it do a darn good job.
 
 =item * It's no longer bundled with its C<Test::> counterpart
@@ -445,9 +450,9 @@ Andy Lester, C<< <andy at petdance.com> >>
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright (C) 2005-2018 by Andy Lester
+Copyright (C) 2005-2017 by Andy Lester
 
-This library is free software.  You may modify or distribute it under
+This library is free software.  You mean modify or distribute it under
 the Artistic License v2.0.
 
 =cut

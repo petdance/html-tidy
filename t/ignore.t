@@ -1,6 +1,5 @@
 #!perl -T
 
-use 5.010001;
 use strict;
 use warnings;
 
@@ -10,21 +9,20 @@ use HTML::Tidy;
 
 my $html = do { local $/ = undef; <DATA> };
 
-my @expected_warnings = split /\n/, <<'HERE';
+my @expected_warnings = split /\n/, q{
 - (1:1) Warning: missing <!DOCTYPE> declaration
 - (23:1) Warning: discarding unexpected <bogotag>
-- (24:XX) Info: value for attribute "height" missing quote marks
-- (24:XX) Info: value for attribute "width" missing quote marks
-- (24:XX) Info: value for attribute "align" missing quote marks
-HERE
-
+- (24:XX) Warning: unescaped & which should be written as &amp;
+- (24:XX) Warning: unescaped & which should be written as &amp;
+};
 chomp @expected_warnings;
+shift @expected_warnings; # First one's blank
 
-my @expected_errors = split /\n/, <<'HERE';
+my @expected_errors = split /\n/, q{
 - (23:1) Error: <bogotag> is not recognized!
-HERE
-
+};
 chomp @expected_errors;
+shift @expected_errors; # First one's blank
 
 WARNINGS_ONLY: {
     my $tidy = HTML::Tidy->new;
@@ -45,7 +43,6 @@ ERRORS_ONLY: {
     isa_ok( $tidy, 'HTML::Tidy' );
 
     $tidy->ignore( type => TIDY_WARNING );
-    $tidy->ignore( type => TIDY_INFO );
     my $rc = $tidy->parse( '-', $html );
     ok( $rc, 'Parsed OK' );
 
@@ -72,8 +69,6 @@ sub munge_returned {
         next if $line =~ /$start_line \(\d+:1\)/;
         $line =~ s/$start_line \((\d+):(\d+)\)/$start_line ($1:XX)/;
     }
-
-    return;
 }
 __DATA__
 <HTML>

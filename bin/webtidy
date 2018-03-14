@@ -1,6 +1,5 @@
-#!/usr/bin/perl
+#!/usr/bin/perl -w
 
-use 5.010001;
 use warnings;
 use strict;
 
@@ -20,7 +19,7 @@ GetOptions(
 ) or $help = 1;
 
 if ( !@ARGV || $help ) {
-    print "webtidy v$HTML::Tidy::VERSION using tidy v" . HTML::Tidy::tidy_library_version() . "\n";
+    print "webtidy v$HTML::Tidy::VERSION using tidyp v" . HTML::Tidy::tidyp_version() . "\n";
     print <DATA>;
     exit 1;
 }
@@ -45,7 +44,7 @@ for my $url ( @ARGV ) {
     } else {
         open( my $fh, '<', $url ) or die "Can't open $url: $!";
         @lines = <$fh>;
-        close $fh or die $!;
+        close $fh;
     }
 
     $tidy->parse( $url, @lines );

@@ -1,14 +1,13 @@
 #!perl -T
 
-use 5.010001;
 use warnings;
 use strict;
 
-use Test::More tests => 1;
+use Test::More tests => 4;
 
 use HTML::Tidy;
 
-my $version_string = HTML::Tidy->tidy_library_version;
-like( $version_string, qr/^5.\d+\.\d+$/, 'Valid version string' );
-
-exit 0;
+for my $version_string (HTML::Tidy->tidyp_version, HTML::Tidy->libtidyp_version) {
+    like( $version_string, qr/^\d\.\d{2,}$/, 'Valid version string' );
+    cmp_ok( $version_string, '>=', '0.90', 'Version is greater than 0.90, which is the one I maintain' );
+}

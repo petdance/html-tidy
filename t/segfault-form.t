@@ -1,9 +1,7 @@
 #!perl -Tw
 
-use 5.010001;
 use strict;
 use warnings;
-
 use Test::More tests => 3;
 
 use HTML::Tidy;

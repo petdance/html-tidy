@@ -7,8 +7,6 @@ MANIFEST
 perlcriticrc
 ppport.h
 README.markdown
-Tidy.xs
-
 t/00-load.t
 t/cfg-for-parse.cfg
 t/cfg-for-parse.t
@@ -24,6 +22,8 @@ t/opt-00.t
 t/parse.t
 t/parse-errors.t
 t/perfect.t
+t/pod-coverage.t
+t/pod.t
 t/roundtrip.t
 t/segfault-form.t
 t/simple.t
@@ -37,6 +37,4 @@ t/venus.t
 t/version.t
 t/wordwrap.cfg
 t/wordwrap.t
-
-xt/pod.t
-xt/pod-coverage.t
+Tidy.xs

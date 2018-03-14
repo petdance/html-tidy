@@ -1,6 +1,5 @@
 #!/usr/bin/perl -T
 
-use 5.010001;
 use strict;
 use warnings;
 
@@ -11,7 +10,10 @@ use HTML::Tidy;
 
 my $tidy = HTML::Tidy->new;
 
-my $errbuf = join( '', <DATA> );
+my $errbuf = do {
+    local $/;
+    readline(*DATA);
+};
 
 CATCH_A_WARNING: {
     my $stashed_warning;
@@ -37,4 +39,5 @@ line 1 column 1 - Warning: inserting missing \'title\' element
 Info: Document content looks like HTML 3.2
 
 FAKE_ERROR_TYPE
-Tidy found 5 warnings and 0 errors!
+5 warnings, 0 errors were found!
+

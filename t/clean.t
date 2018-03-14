@@ -1,6 +1,5 @@
 #!/usr/bin/perl -T
 
-use 5.010001;
 use strict;
 use warnings;
 
@@ -9,7 +8,7 @@ use Test::More tests => 3;
 
 use HTML::Tidy;
 
-my $tidy = HTML::Tidy->new( { wrap => 0 } );
+my $tidy = HTML::Tidy->new;
 isa_ok( $tidy, 'HTML::Tidy' );
 
 my $expected_pattern = 'Usage: clean($str [, $str...])';
@@ -25,10 +24,10 @@ like(
 );
 
 sub _expected_empty_html {
-    return qr{<!DOCTYPE html>
+    return qr{<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <html>
 <head>
-<meta name="generator" content="HTML Tidy for HTML5 for Linux version \d+\.\d+\.\d+">
+<meta name="generator" content="[^"]+">
 <title></title>
 </head>
 <body>

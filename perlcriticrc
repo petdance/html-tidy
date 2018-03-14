@@ -1,12 +1,6 @@
-verbose = %f:%l:%c %m (%p)\n    %r\n\n
-
-[-BuiltinFunctions::ProhibitBooleanGrep]
-
 [-CodeLayout::ProhibitParensWithBuiltins]
 [CodeLayout::ProhibitHardTabs]
 allow_leading_tabs = 0
-[-CodeLayout::RequireASCII]
-# t/unicode.t uses UTF8.
 [-CodeLayout::RequireTidyCode]
 # Never works for me.
 
@@ -19,37 +13,23 @@ above_version = 5.008008
 [-Documentation::RequirePodAtEnd]
 [-Documentation::RequirePodSections]
 
-[-Editor::RequireEmacsFileVariables]
-
-# We're a utility.  We're OK with die.
-[-ErrorHandling::RequireCarping]
-[-ErrorHandling::RequireUseOfExceptions]
-
-[-InputOutput::ProhibitJoinedReadline]
 [-InputOutput::RequireCheckedSyscalls]
 functions = open opendir read readline readdir close closedir
 
-[-Modules::ProhibitAutomaticExportation]
-[-Modules::RequireExplicitInclusion]
+[-Miscellanea::RequireRcsKeywords]
+
 [-Modules::RequireVersionVar]
 
-[-RegularExpressions::ProhibitComplexRegexes]
 [-RegularExpressions::ProhibitEscapedMetacharacters]
 [-RegularExpressions::RequireDotMatchAnything]
 [-RegularExpressions::RequireExtendedFormatting]
 [-RegularExpressions::RequireLineBoundaryMatching]
 
-[-Subroutines::ProhibitCallsToUndeclaredSubs]
-[-Subroutines::ProhibitCallsToUnexportedSubs]
-# Too many subs coming in from Test::More
-[-Subroutines::RequireArgUnpacking]
+[Subroutines::RequireArgUnpacking]
 
 [-ValuesAndExpressions::ProhibitConstantPragma]
+[-ValuesAndExpressions::ProhibitNoisyQuotes]
 [-ValuesAndExpressions::ProhibitEmptyQuotes]
 [-ValuesAndExpressions::ProhibitMagicNumbers]
-[-ValuesAndExpressions::ProhibitNoisyQuotes]
-[-ValuesAndExpressions::RequireConstantOnLeftSideOfEquality]
-[-ValuesAndExpressions::RequireInterpolationOfMetachars]
 
-[-Variables::ProhibitPackageVars]
 [-Variables::ProhibitPunctuationVars]
