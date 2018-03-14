@@ -329,12 +329,12 @@ sub _is_keeper {
 
     my @ignore_types = @{$self->{ignore_type}};
     if ( @ignore_types ) {
-        return if grep { $message->type == $_ } @ignore_types;
+        return 0 if grep { $message->type == $_ } @ignore_types;
     }
 
     my @ignore_texts = @{$self->{ignore_text}};
     if ( @ignore_texts ) {
-        return if grep { $message->text =~ $_ } @ignore_texts;
+        return 0 if grep { $message->text =~ $_ } @ignore_texts;
     }
 
     return 1;
