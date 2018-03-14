@@ -10,13 +10,12 @@ use HTML::Tidy;
 
 my $html = do { local $/; <DATA> };
 
-my @expected_messages = split /\n/, q{
+my @expected_messages = split /\n/, <<'HERE';
 DATA (7:1) Error: <x> is not recognized!
 DATA (8:1) Error: <y> is not recognized!
-};
+HERE
 
 chomp @expected_messages;
-shift @expected_messages; # First one's blank
 
 my $tidy = HTML::Tidy->new( { config_file => 't/cfg-for-parse.cfg' } );
 isa_ok( $tidy, 'HTML::Tidy' );

@@ -10,14 +10,13 @@ use HTML::Tidy;
 
 my $html = do { local $/; <DATA> };
 
-my @expected_messages = split /\n/, q{
+my @expected_messages = split /\n/, <<'HERE';
 DATA (24:XX) Info: value for attribute "height" missing quote marks
 DATA (24:XX) Info: value for attribute "width" missing quote marks
 DATA (24:XX) Info: value for attribute "align" missing quote marks
-};
+HERE
 
 chomp @expected_messages;
-shift @expected_messages; # First one's blank
 
 IGNORE_BOGOTAG: {
     my $tidy = HTML::Tidy->new;
@@ -44,6 +43,8 @@ sub munge_returned {
         next if $line =~ m/$start_line \(\d+:1\)/;
         $line =~ s/$start_line \((\d+):(\d+)\)/$start_line ($1:XX)/;
     }
+
+    return;
 }
 __DATA__
 <HTML>

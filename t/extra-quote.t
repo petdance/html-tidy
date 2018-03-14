@@ -20,14 +20,14 @@ $tidy->ignore( text => qr/DOCTYPE/ );
 my $rc = $tidy->parse( '-', $html );
 ok( $rc, 'Parsed OK' );
 
-my @expected = split /\n/, q{
+my @expected = split /\n/, <<'HERE';
 - (4:1) Warning: <img> unexpected or duplicate quote mark
 - (4:1) Warning: <img> escaping malformed URI reference
 - (4:1) Warning: <img> illegal characters found in URI
 - (4:1) Warning: <img> lacks "alt" attribute
-};
+HERE
+
 chomp @expected;
-shift @expected; # First one's blank
 
 my @messages = $tidy->messages;
 is( scalar @messages, 4, 'Should have exactly three messages' );
