@@ -10,21 +10,21 @@ use HTML::Tidy;
 
 my $html = do { local $/ = undef; <DATA> };
 
-my @expected_warnings = split /\n/, q{
+my @expected_warnings = split /\n/, <<'HERE';
 - (1:1) Warning: missing <!DOCTYPE> declaration
 - (23:1) Warning: discarding unexpected <bogotag>
 - (24:XX) Info: value for attribute "height" missing quote marks
 - (24:XX) Info: value for attribute "width" missing quote marks
 - (24:XX) Info: value for attribute "align" missing quote marks
-};
-chomp @expected_warnings;
-shift @expected_warnings; # First one's blank
+HERE
 
-my @expected_errors = split /\n/, q{
+chomp @expected_warnings;
+
+my @expected_errors = split /\n/, <<'HERE';
 - (23:1) Error: <bogotag> is not recognized!
-};
+HERE
+
 chomp @expected_errors;
-shift @expected_errors; # First one's blank
 
 WARNINGS_ONLY: {
     my $tidy = HTML::Tidy->new;
